@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Gas Tracker</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
+<title>Gas Tracker</title>
+<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
 </head>
 <body>
-<div>
-	<h2>Gas Tracker</h2>
-</div>
-<%= yield %>
 
+<div class="container">
+	<div class="three columns sidebar">
+		<nav>
+			<h3>Gas Tracker</h3>
+			<ul>
+				<li><a href="#">Cars</a></li>
+				<li><a href="#">Logout</a></li>
+			</ul>
+		</nav>
+		&nbsp;
+	</div>
+	<div class="twelve columns offset-by-one content">
+		<%= yield %>
+	</div>
+</div>
 </body>
 </html>
