@@ -1,3 +1,5 @@
 <h1><%= @car %></h1>
-<%= render 'records/list' %>
+<div id="records">
+	<%= render partial: 'records/list', locals: {records: @records} %>
+</div>
 <%= render 'records/new' %>

@@ -12,3 +12,15 @@ td.delete a {
 	visibility: hidden;
 }
 
+form.add-record {
+	margin-top: 10px;
+}
+
+form.add-record input[type="text"] {
+	width: 60px;
+	display: inline;
+}
+
+form.add-record input[type="submit"] {
+	height: 30px;
+}

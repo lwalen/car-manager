@@ -1,0 +1,3 @@
+
+$('#add-record').children('input[type=text]').val("");
+$("#records").html("<%= escape_javascript(render partial: 'list', locals: {records: @records}) %>");

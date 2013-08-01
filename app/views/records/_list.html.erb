@@ -10,12 +10,12 @@
 		</tr>
 	</thead>
 	<tbody>
-		<% @records.each do |rec| %>
+		<% records.each do |rec| %>
 			<tr>
 				<td><%= rec.date %></td>
 				<td><%= rec.mileage %></td>
-				<td><%= rec.gallons %></td>
-				<td><%= rec.cost %></td>
+				<td><%= number_with_precision(rec.gallons, precision: 2) %></td>
+				<td><%= number_to_currency(rec.cost) %></td>
 				<td class="delete"><%= link_to 'delete', rec, method: :delete %></td>
 			</tr>
 		<% end %>

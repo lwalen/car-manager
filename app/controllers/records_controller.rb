@@ -4,11 +4,13 @@ class RecordsController < ApplicationController
 
   def create
 		@record = Record.new(record_params)
+		@records = Record.all
 
 		respond_to do |format|
 			if @record.save
 				message 'success', "Record successfully created."
 				format.html { redirect_to @record.car }
+				format.js   { render layout: false }
 				#format.json { render json: @car, status: :created, location: @car }
 			else
 				format.html { render action: "new" }

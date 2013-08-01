@@ -6,5 +6,5 @@ $(document).ready(function() {
 		$(this).children('.delete').children('a').css('visibility', 'hidden');
 	});
 
-	$('.datepicker').datepicker();
+	$('#record_date').datepicker();
 });
