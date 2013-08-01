@@ -28,6 +28,12 @@ h1 {
 	font-size: 49px;
 }
 
+h3 {
+	padding-bottom: 5px;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #ddd;
+}
+
 h3 a {
 	text-decoration: none;
 }
@@ -45,4 +51,8 @@ h3 a {
 .remember-me {
 	float: left;
 	margin-right: 10px
+}
+
+input[type="submit"] {
+	height: 30px;
 }

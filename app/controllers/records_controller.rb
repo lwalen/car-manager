@@ -1,13 +1,12 @@
 class RecordsController < ApplicationController
-  def new
-  end
+	def new
+	end
 
-  def create
+	def create
 		@record = Record.new(record_params)
-		@records = Record.all
-
 		respond_to do |format|
 			if @record.save
+				@records = @record.car.records
 				message 'success', "Record successfully created."
 				format.html { redirect_to @record.car }
 				format.js   { render layout: false }
@@ -17,7 +16,7 @@ class RecordsController < ApplicationController
 				format.json { render json: @car.errors, status: :unprocessable_entity }
 			end
 		end
-  end
+	end
 
 	def record_params
 		params.require(:record).permit(:car_id, :date, :mileage, :gallons, :cost)
