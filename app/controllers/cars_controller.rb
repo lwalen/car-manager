@@ -20,6 +20,9 @@ class CarsController < ApplicationController
 	def create
 		@car = Car.new(car_params)
 		@car.user_id = current_user.id
+		if Car.find_by_user_id(current_user.id).nil?
+			@car.main = true
+		end
 
 		respond_to do |format|
 			if @car.save
