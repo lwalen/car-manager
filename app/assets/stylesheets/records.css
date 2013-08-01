@@ -1,0 +1,14 @@
+
+
+table tr, table td {
+	border-bottom: 1px solid gray;
+}
+
+table td {
+	padding: 0px 5px;
+}
+
+td.delete a {
+	visibility: hidden;
+}
+

@@ -1,7 +1,20 @@
 GasTracker::Application.routes.draw do
   
+  get "records/new"
+  get "records/create"
+	get 'register' => 'users#new'
+	get 'signout' => 'sessions#destroy'
+
+	controller :sessions do
+		get 'signin' => :new
+		post 'signin' => :create
+		delete 'signout' => :destroy
+	end
+
 	root to: 'users#index'
 	resources :users
+	resources :cars
+	resources :records
 
 
   # The priority is based upon order of creation: first created -> highest priority.

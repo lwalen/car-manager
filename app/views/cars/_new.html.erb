@@ -1,0 +1,7 @@
+<div class="well well-small">
+	<h4>New Car</h4>
+	<%= form_for Car.new, html: {class: 'form-inline'} do |f| %>
+		<%= f.text_field :name, placeholder: 'Name' %>
+		<%= f.submit 'Add' %>
+	<% end %>
+</div>

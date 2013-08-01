@@ -12,11 +12,12 @@
  *= require base
  *= require layout
  *= require skeleton
+ *= require jquery.ui.datepicker
  *= require_self
  */
 
-div.container {
-	padding-top: 60px;
+div.container > div.columns{
+	margin-top: 80px;
 }
 
 nav {
@@ -25,4 +26,23 @@ nav {
 
 h1 {
 	font-size: 49px;
+}
+
+h3 a {
+	text-decoration: none;
+}
+
+.alert {
+	position: relative;
+	top: 40px;
+	margin-top: 0px !important;
+}
+
+.right {
+	float: right;
+}
+
+.remember-me {
+	float: left;
+	margin-right: 10px
 }

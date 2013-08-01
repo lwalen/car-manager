@@ -1,0 +1,10 @@
+<div>
+	<%= form_for Record.new do |r| %>
+		<%= r.hidden_field :car_id, value: @car.id %>
+		<%= r.text_field :date, placeholder: 'Date', class: 'datepicker' %>
+		<%= r.text_field :mileage, placeholder: 'Mileage' %>
+		<%= r.text_field :gallons, placeholder: 'Gallons' %>
+		<%= r.text_field :cost, placeholder: 'Cost' %>
+		<%= r.submit 'Add' %>
+	<% end %>
+</div>

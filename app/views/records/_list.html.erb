@@ -1,0 +1,23 @@
+
+<table>
+	<thead>
+		<tr>
+			<th>Date</th>
+			<th>Mileage</th>
+			<th>Gallons</th>
+			<th>Cost</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @records.each do |rec| %>
+			<tr>
+				<td><%= rec.date %></td>
+				<td><%= rec.mileage %></td>
+				<td><%= rec.gallons %></td>
+				<td><%= rec.cost %></td>
+				<td class="delete"><%= link_to 'delete', rec, method: :delete %></td>
+			</tr>
+		<% end %>
+	<tbody>
+</table>

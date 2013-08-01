@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
 
-	#attr_accessible :username, :password, :password_confirmation, :created_at
 	validates :username, 
 		presence: true, 
 		uniqueness: true, 
@@ -21,7 +20,6 @@ class User < ActiveRecord::Base
 			self[column] = SecureRandom.urlsafe_base64
 		end while User.exists?(column => self[column])
 	end
-
 
 	def to_s
 		"#{self.username}"
