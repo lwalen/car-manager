@@ -15,4 +15,8 @@
 /log/*.log
 /tmp
 
-config/initializers/secret_token.rb
+# Ignore secret token
+/config/initializers/secret_token.rb
+
+# Ignore soft link to other app (for copying code)
+/dailies
