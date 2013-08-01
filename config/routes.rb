@@ -11,7 +11,7 @@ GasTracker::Application.routes.draw do
 		delete 'signout' => :destroy
 	end
 
-	root to: 'cars#index'
+	root to: 'users#index'
 	resources :users
 	resources :cars
 	resources :records

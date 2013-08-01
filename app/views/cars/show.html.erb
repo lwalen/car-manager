@@ -1,9 +1,0 @@
-<h1><%= @car %></h1>
-<div id="records">
-	<% if @records.empty? %>
-		<p>no records yet!</p>
-	<% else %>
-		<%= render partial: 'records/list', locals: {records: @records} %>
-	<% end %>
-</div>
-<%= render 'records/new' %>

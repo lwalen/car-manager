@@ -8,7 +8,7 @@ class CarsController < ApplicationController
 		@records = @car.records.all
 
 		respond_to do |format|
-			format.html # show.html.erb
+			format.html
 			format.json { render json: @car }
 		end
   end

@@ -1,0 +1,9 @@
+%h1 Cars
+%ul
+	- @cars.each do |car|
+		%li
+			%h4= link_to car, car_path(car.id)
+			= link_to 'Edit', edit_car_path(car.id)
+			= link_to 'Delete', car, method: :delete,
+				confirm: 'Are you sure you wish to delete this car? This will also delete all records associated with this car, and cannot be undone.'
+	= render 'cars/new'

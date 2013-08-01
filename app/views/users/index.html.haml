@@ -1,0 +1,11 @@
+%ul>
+	- @users.each do |user|
+		%li
+			= user
+			%ul
+				- user.cars.each do |car|
+					%li
+						= car
+						%ul
+							- car.records.each do |rec|
+								%li= number_to_currency(rec.cost)

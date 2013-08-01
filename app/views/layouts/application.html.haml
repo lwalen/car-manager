@@ -1,0 +1,25 @@
+!!! 5
+%html
+	%head
+		%title Gas Tracker
+		= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+		= javascript_include_tag "application", "data-turbolinks-track" => true
+		= csrf_meta_tags
+
+.container
+	- if notice
+		%div{class: "alert alert-#{flash[:notice_type]} twelve columns"}
+			= notice
+	.clear
+	.three.columns.sidebar
+		%nav
+			%h3= link_to "Gas Tracker", root_url
+			%ul
+				- if user_signed_in?
+					%li= link_to "Cars", cars_url
+					%li= link_to "Sign Out", signout_url
+				- else
+					%li= link_to "Sign In", signin_url
+					%li= link_to "Register", register_url
+	.twelve.columns.offset-by-one.content
+		= yield

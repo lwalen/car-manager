@@ -1,0 +1,7 @@
+%h1= @car
+#records
+	- if @records.empty?
+		%p no records yet!
+	- else
+		= render partial: 'records/list', locals: {records: @records}
+= render 'records/new'

@@ -48,6 +48,10 @@ h3 a {
 	float: right;
 }
 
+.clear {
+	clear: both;
+}
+
 .remember-me {
 	float: left;
 	margin-right: 10px

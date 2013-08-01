@@ -1,0 +1,24 @@
+
+table.records {
+	tr,  td {
+		border-bottom: 1px solid gray;
+	}
+
+	td,  th {
+		padding: 0px 5px;
+	}
+
+	td.delete a {
+		visibility: hidden;
+	}
+}
+
+form.add-record {
+	margin-top: 10px;
+
+	input[type="text"] {
+		width: 60px;
+		display: inline;
+	}
+}
+
