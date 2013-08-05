@@ -4,22 +4,31 @@ class RecordsController < ApplicationController
 
 	def create
 		@record = Record.new(record_params)
+		
+		if @record.mileage.nil? || @record.gallons.nil?
+			# disable mileage stats for record
+		end
+
+		if @record.cost.nil?
+			#disable price stats for record
+		end
+
+		if @record.date.nil?
+			#disable time stats for record
+		end
+
 		respond_to do |format|
 			if @record.save
 				@records = @record.car.records
 				message 'success', "Record successfully created."
 				format.html { redirect_to @record.car }
 				format.js   { render layout: false }
-				#format.json { render json: @car, status: :created, location: @car }
 			else
 				format.html { render action: "new" }
 				format.json { render json: @car.errors, status: :unprocessable_entity }
+				format.js   { render layout: false }
 			end
 		end
-	end
-
-	def record_params
-		params.require(:record).permit(:car_id, :date, :mileage, :gallons, :cost)
 	end
 
 	def destroy
@@ -34,4 +43,9 @@ class RecordsController < ApplicationController
 			redirect_to cars_url
 		end
 	end
+
+	private
+		def record_params
+			params.require(:record).permit(:car_id, :date, :mileage, :gallons, :cost)
+		end
 end

@@ -9,5 +9,5 @@ $(document).ready(function() {
 		}
 	});
 
-	$('#record_date').datepicker();
+	$('#record_date').datepicker({ dateFormat: 'yy-mm-dd' });
 });
