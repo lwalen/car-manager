@@ -1,6 +1,5 @@
 %div
 	= form_for Record.new, 
-		remote: true,
 		html: {class: "add-record", id: "add-record"} do |r|
 		= r.hidden_field :car_id, value: @car.id
 		= r.text_field :date, placeholder: 'Date'

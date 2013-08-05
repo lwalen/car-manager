@@ -22,11 +22,9 @@ class RecordsController < ApplicationController
 				@records = @record.car.records
 				message 'success', "Record successfully created."
 				format.html { redirect_to @record.car }
-				format.js   { render layout: false }
 			else
 				format.html { render action: "new" }
 				format.json { render json: @car.errors, status: :unprocessable_entity }
-				format.js   { render layout: false }
 			end
 		end
 	end
