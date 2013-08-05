@@ -13,7 +13,11 @@ GasTracker::Application.routes.draw do
 
 	root to: 'users#index'
 	resources :users
-	resources :cars
+	resources :cars do
+		member do
+			get 'make_primary'
+		end
+	end
 	resources :records
 
 

@@ -1,9 +1,9 @@
 class CarsController < ApplicationController
-  def index
+	def index
 		@cars = current_user.cars
-  end
+	end
 
-  def show
+	def show
 		@car = Car.find(params[:id])
 		@records = @car.records.all
 
@@ -11,11 +11,11 @@ class CarsController < ApplicationController
 			format.html
 			format.json { render json: @car }
 		end
-  end
+	end
 
-  def new
+	def new
 		@car = Car.new
-  end
+	end
 
 	def create
 		@car = Car.new(car_params)
@@ -54,8 +54,8 @@ class CarsController < ApplicationController
 		respond_to do |format|
 			if @car.update_attributes(params[:car])
 				message 'success', "Car '#{@car.name}' was successfully updated."
-					format.html { redirect_to user_path(@car.user_id) }
-					format.json { head :no_content }
+				format.html { redirect_to user_path(@car.user_id) }
+				format.json { head :no_content }
 			else
 				format.html { render action: "edit" }
 				format.json { render json: @car.errors, status: :unprocessable_entity }
@@ -72,6 +72,20 @@ class CarsController < ApplicationController
 		else
 			message 'error', "You do not have permission to delete this car."
 			redirect_to cars_url
+		end
+	end
+
+	def make_primary
+		@car = Car.find(params[:id])
+		@current_primary = Car.where("main = 't'").first
+		@current_primary.main = false
+		@car.main = true
+		if @car.save && @current_primary.save
+			respond_to do |format|
+				format.html { redirect_to cars_url }
+			end
+		else 
+			message 'error', "Failed to set car as primary"
 		end
 	end
 end
