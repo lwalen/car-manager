@@ -65,6 +65,13 @@ class CarsController < ApplicationController
 
 	def destroy
 		@car = Car.find(params[:id])
+
+		if @car.primary?
+			@new_primary = Car.where("main = 'f'").first
+			@new_primary.main = true
+			@new_primary.save
+		end
+
 		if current_user.id == @car.user_id
 			@car.destroy
 			message 'success', "Car deleted successfully."
