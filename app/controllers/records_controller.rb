@@ -19,6 +19,7 @@ class RecordsController < ApplicationController
 
 		respond_to do |format|
 			if @record.save
+				@record.car.update_mpg
 				@records = @record.car.records
 				message 'success', "Record successfully created."
 				format.html { redirect_to @record.car }
@@ -34,6 +35,7 @@ class RecordsController < ApplicationController
 		car = @record.car
 		if current_user.id == car.user_id
 			@record.destroy
+			car.update_mpg
 			message 'success', "Record deleted successfully."
 			redirect_to car
 		else
