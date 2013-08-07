@@ -7,3 +7,22 @@ form.add-car {
 		display: inline;
 	}
 }
+
+header {
+	.stats p {
+		margin: 0;
+	}
+	margin-bottom: 20px;
+}
+
+.name {
+	h4, a, img {
+		display: inline;
+	}
+
+	img {
+		vertical-align: top;
+		position: relative;
+		top: 2px;
+	}
+}

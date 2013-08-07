@@ -6,6 +6,7 @@
 			%th Mileage
 			%th Gallons
 			%th Cost
+			%th Miles
 			%th MPG
 			%th
 	%tbody>
@@ -15,5 +16,6 @@
 				%td= rec.mileage
 				%td= number_with_precision(rec.gallons, precision: 2)
 				%td= number_to_currency(rec.cost)
+				%td= rec.mileage - records[i-1].mileage if i != 0
 				%td= (rec.mileage - records[i-1].mileage) / rec.gallons if i != 0
 				%td.delete= link_to 'delete', rec, method: :delete

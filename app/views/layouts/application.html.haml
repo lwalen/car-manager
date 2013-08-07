@@ -12,12 +12,14 @@
 			//		= notice
 			.three.columns.sidebar
 				%nav
-					%h3= link_to "Gas Tracker", root_url
-					%ul
-						- if user_signed_in?
+					- if user_signed_in?
+						%h3= link_to "Gas Tracker", root_url, title: 'View primary car'
+						%ul
 							%li= link_to "Cars", cars_url
 							%li= link_to "Sign Out", signout_url
-						- else
+					- else
+						%h3= link_to "Gas Tracker", root_url if !user_signed_in?
+						%ul
 							%li= link_to "Sign In", signin_url
 							%li= link_to "Register", register_url
 				&nbsp;

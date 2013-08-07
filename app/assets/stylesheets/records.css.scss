@@ -1,11 +1,19 @@
 
 table.records {
+	th {
+		text-align: left;
+	}
+
+	td {
+		text-align: right;
+	}
+	
 	tr,  td {
 		border-bottom: 1px solid gray;
 	}
 
 	td,  th {
-		padding: 0px 5px;
+		padding: 0px 10px;
 	}
 
 	td.delete a {

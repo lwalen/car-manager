@@ -1,5 +1,13 @@
-%h1= @car
-.mpg= @car.mpg
+%header
+	%h1= @car
+	.stats
+		%p
+			%em Average MPG:
+			= number_with_precision @car.mpg, precision: 3
+		%p
+			%em Cost per month:
+		%p
+			%em Gallons per month:
 #records
 	- if @records.empty?
 		%p no records yet!
