@@ -12,10 +12,11 @@
 	%tbody>
 		- records.each_with_index do |rec, i|
 			%tr
-				%td= rec.date
+				%td.date
+					= rec.date.strftime('%b %-d')
 				%td= rec.mileage
 				%td= number_with_precision(rec.gallons, precision: 2)
 				%td= number_to_currency(rec.cost)
 				%td= rec.mileage - records[i-1].mileage if i != 0
-				%td= (rec.mileage - records[i-1].mileage) / rec.gallons if i != 0
+				%td= number_with_precision((rec.mileage - records[i-1].mileage) / rec.gallons, precision: 2) if i != 0
 				%td.delete= link_to 'delete', rec, method: :delete

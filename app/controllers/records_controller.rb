@@ -4,6 +4,7 @@ class RecordsController < ApplicationController
 
 	def create
 		@record = Record.new(record_params)
+		@record.date = @record.date.strftime('%Y-%m-%d')
 		
 		if @record.mileage.nil? || @record.gallons.nil?
 			# disable mileage stats for record

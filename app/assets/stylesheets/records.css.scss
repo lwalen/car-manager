@@ -1,13 +1,13 @@
 
 table.records {
-	th {
+	th, .date {
 		text-align: left;
 	}
 
 	td {
 		text-align: right;
 	}
-	
+
 	tr,  td {
 		border-bottom: 1px solid gray;
 	}

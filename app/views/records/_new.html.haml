@@ -2,8 +2,8 @@
 	= form_for Record.new, 
 		html: {class: "add-record", id: "add-record"} do |r|
 		= r.hidden_field :car_id, value: @car.id
-		= r.text_field :date, placeholder: 'Date'
-		= r.text_field :mileage, placeholder: 'Mileage'
-		= r.text_field :gallons, placeholder: 'Gallons'
-		= r.text_field :cost, placeholder: 'Cost'
+		= r.text_field :date, placeholder: 'Date', autocomplete: 'off'
+		= r.text_field :mileage, placeholder: 'Mileage', autocomplete: 'off'
+		= r.text_field :gallons, placeholder: 'Gallons', autocomplete: 'off'
+		= r.text_field :cost, placeholder: 'Cost', autocomplete: 'off'
 		= r.submit '+'
