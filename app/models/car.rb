@@ -5,7 +5,7 @@ class Car < ActiveRecord::Base
 	def update_mpg
 		mpg = []
 		self.records.each_with_index do |rec, index|
-			if index != 0
+			if index != 0 && rec.stat? && self.records[index-1].stat?
 				miles = rec.mileage - self.records[index-1].mileage
 				mpg.push(miles / rec.gallons)
 			end

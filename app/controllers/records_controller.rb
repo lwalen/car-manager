@@ -2,10 +2,26 @@ class RecordsController < ApplicationController
 	def new
 	end
 
+	def enable_stats
+		@record = Record.find(params[:id])
+		@record.stat = true
+		@record.save
+		@record.car.update_mpg
+		redirect_to @record.car
+	end
+
+	def disable_stats
+		@record = Record.find(params[:id])
+		@record.stat = false
+		@record.save
+		@record.car.update_mpg
+		redirect_to @record.car
+	end
+
 	def create
 		@record = Record.new(record_params)
 		@record.date = @record.date.strftime('%Y-%m-%d')
-		
+
 		if @record.mileage.nil? || @record.gallons.nil?
 			# disable mileage stats for record
 		end
@@ -46,7 +62,7 @@ class RecordsController < ApplicationController
 	end
 
 	private
-		def record_params
-			params.require(:record).permit(:car_id, :date, :mileage, :gallons, :cost)
-		end
+	def record_params
+		params.require(:record).permit(:car_id, :date, :mileage, :gallons, :cost)
+	end
 end

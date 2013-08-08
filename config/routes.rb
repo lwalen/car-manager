@@ -18,7 +18,12 @@ GasTracker::Application.routes.draw do
 			get 'make_primary'
 		end
 	end
-	resources :records
+	resources :records do
+		member do
+			get 'enable_stats'
+			get 'disable_stats'
+		end
+	end
 
 
   # The priority is based upon order of creation: first created -> highest priority.

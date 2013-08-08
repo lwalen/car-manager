@@ -5,7 +5,9 @@
 			.name
 				%h4= link_to car, car_path(car.id)
 				= image_tag("star.png", alt: "Primary", title: "Primary") if car.primary?
-				= link_to(image_tag("empty_star.png"), make_primary_car_path(car.id), title: "Click to make primary") if !car.primary?
+				= link_to(image_tag("empty_star.png"), 
+					make_primary_car_path(car.id), 
+					title: "Click to make primary") if !car.primary?
 			= link_to 'Edit', edit_car_path(car.id)
 			= link_to 'Delete', car, method: :delete,
 				confirm: 'Are you sure you wish to delete this car? This will also delete all records associated with this car, and cannot be undone.'

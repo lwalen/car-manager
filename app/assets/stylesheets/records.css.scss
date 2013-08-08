@@ -16,8 +16,12 @@ table.records {
 		padding: 0px 10px;
 	}
 
-	td.delete a {
+	td.actions a {
 		visibility: hidden;
+	}
+
+	.no-stat {
+		color: #bbb;
 	}
 }
 
