@@ -16,22 +16,27 @@
     %link{href: "/favicon-32x32.png", rel: "icon", sizes: "32x32", type: "image/png"}/
     %meta{content: "#ffc40d", name: "msapplication-TileColor"}/
   %body
-    .container
-      //- if notice
-      //  %div{class: "alert alert-#{flash[:notice_type]} twelve columns"}
-      //    = notice
-      .three.columns.sidebar
-        %nav
-          - if user_signed_in?
-            %h3= link_to "Gas Tracker", root_url, title: 'View primary car'
-            %ul
+    //- if notice
+    //  %div{class: "alert alert-#{flash[:notice_type]} twelve columns"}
+    //    = notice
+    %nav.navbar.navbar-default(role = 'navigation')
+      .container
+        .navbar-header
+          %button.navbar-toggle(type='button' data-toggle='collapse' data-target='#navbar-collapse')
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = link_to "Gas Tracker", root_url, class: 'navbar-brand', title: "#{"View primary car" if user_signed_in?}"
+
+        .collapse.navbar-collapse#navbar-collapse
+          %ul.nav.navbar-nav.navbar-right
+            - if user_signed_in?
               %li= link_to "Cars", cars_url
               %li= link_to "Sign Out", signout_url
-          - else
-            %h3= link_to "Gas Tracker", root_url if !user_signed_in?
-            %ul
+            - else
               %li= link_to "Sign In", signin_url
               %li= link_to "Register", register_url
-        &nbsp;
-      .twelve.columns.offset-by-one.content
-        = yield
+
+    .container
+      = yield

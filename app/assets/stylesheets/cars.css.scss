@@ -2,27 +2,3 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-form.add-car {
-	input[type="text"], input[type="submit"] {
-		display: inline;
-	}
-}
-
-header {
-	.stats p {
-		margin: 0;
-	}
-	margin-bottom: 20px;
-}
-
-.name {
-	h4, a, img {
-		display: inline;
-	}
-
-	img {
-		vertical-align: top;
-		position: relative;
-		top: 2px;
-	}
-}
