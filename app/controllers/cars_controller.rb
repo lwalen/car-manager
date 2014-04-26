@@ -5,7 +5,7 @@ class CarsController < ApplicationController
 
 	def show
 		@car = Car.find(params[:id])
-		@records = @car.records.all
+		@records = @car.records.find(:all, order: "mileage")
 
 		respond_to do |format|
 			format.html

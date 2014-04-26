@@ -14,7 +14,7 @@
 			%tr{class: ("no-stat" if !rec.stat?)}
 				%td.date
 					= rec.date.strftime('%b %-d')
-				%td= rec.mileage
+				%td= rec.mileage.to_s.scan(/.{1,3}/).join(' ')
 				%td= number_with_precision(rec.gallons, precision: 2)
 				%td= number_to_currency(rec.cost)
 				%td= rec.mileage - records[i-1].mileage if i != 0 && rec.stat?
