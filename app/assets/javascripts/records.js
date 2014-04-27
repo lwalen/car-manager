@@ -8,6 +8,4 @@ $(document).ready(function() {
 			$(this).children('.actions').children().css('visibility', 'hidden');
 		}
 	});
-
-	$('#record_date').datepicker({ dateFormat: 'M d, yy' });
 });
