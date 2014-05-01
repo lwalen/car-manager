@@ -61,6 +61,16 @@ class RecordsController < ApplicationController
 		end
 	end
 
+	def upload
+		@records = []
+	end
+
+	def add_multiple
+			#message 'success', params[:new_records][:content]
+			message 'success', "Added X records to CAR"
+			redirect_to cars_url
+	end
+
 	private
 	def record_params
 		params.require(:record).permit(:car_id, :date, :mileage, :gallons, :cost)

@@ -1,16 +1,14 @@
-- if @user.errors.any?
-	- @user.errors.full_messages.each do |msg|
-		.alert.alert-error= msg
+= form_for User.new do |f|
+  .form-group
+    = f.label :username, 'Username'
+    = f.text_field :username, 'autocapitalize' => 'none', class: 'form-control'
 
-= form_for @user, html: { multipart: true } do |f|
-	= f.label :username, 'Username'
-	= f.text_field :username
-	
-	= f.label :password, 'Password'
-	= f.password_field :password
+  .form-group
+    = f.label :password, 'Password'
+    = f.password_field :password, class: 'form-control'
 
-	= f.label :password_confirmation, 'Confirm Password'
-	= f.password_field :password_confirmation
+  .form-group
+    = label :password_confirmation, 'Confirm Password'
+    = f.password_field :password_confirmation, class: 'form-control'
 
-	= f.submit
-	= cancel_link
+  = f.submit "Register", class: 'btn btn-primary btn-lg'

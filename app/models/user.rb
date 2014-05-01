@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
 		end while User.exists?(column => self[column])
 	end
 
+	def primary_car
+		self.cars.where(main: true).first
+	end
+
 	def to_s
 		"#{self.username}"
 	end

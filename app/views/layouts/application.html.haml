@@ -7,20 +7,9 @@
     = csrf_meta_tags
 
     %meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1')/
-    %link{href: "/apple-touch-icon-57x57.png", rel: "apple-touch-icon", sizes: "57x57"}/
-    %link{href: "/apple-touch-icon-114x114.png", rel: "apple-touch-icon", sizes: "114x114"}/
-    %link{href: "/apple-touch-icon-72x72.png", rel: "apple-touch-icon", sizes: "72x72"}/
-    %link{href: "/apple-touch-icon-60x60.png", rel: "apple-touch-icon", sizes: "60x60"}/
-    %link{href: "/apple-touch-icon-120x120.png", rel: "apple-touch-icon", sizes: "120x120"}/
-    %link{href: "/apple-touch-icon-76x76.png", rel: "apple-touch-icon", sizes: "76x76"}/
-    %link{href: "/favicon-96x96.png", rel: "icon", sizes: "96x96", type: "image/png"}/
-    %link{href: "/favicon-16x16.png", rel: "icon", sizes: "16x16", type: "image/png"}/
-    %link{href: "/favicon-32x32.png", rel: "icon", sizes: "32x32", type: "image/png"}/
-    %meta{content: "#ffc40d", name: "msapplication-TileColor"}/
+
+    = render 'pages/favicons'
   %body
-    //- if notice
-    //  %div{class: "alert alert-#{flash[:notice_type]} twelve columns"}
-    //    = notice
     %nav.navbar.navbar-default(role='navigation')
       .container
         .navbar-header
@@ -41,4 +30,7 @@
               %li= link_to "Register", register_url
 
     .container
+      - if flash[:notice]
+        .alert{class: "alert-#{flash[:notice_type]}"}
+          = notice
       = yield

@@ -11,17 +11,17 @@ class SessionsController < ApplicationController
 			else
 				cookies[:auth_token] = user.auth_token
 			end
-			message 'success', "You have been signed in as #{user}"
-			redirect_to root_path
+			message 'success', "Welcome, #{user}!"
+			redirect_to car_path(user.primary_car)
 		else
-			message 'error', "Invalid user/password combination"
+			message 'error', "Invalid user/password combination."
 			redirect_to signin_url
 		end
 	end
 
 	def destroy
 		cookies.delete(:auth_token)
-		message 'success', "You have been signed out"
+		message 'success', "You have been signed out."
 		redirect_to root_path
 	end
 end

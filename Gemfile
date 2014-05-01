@@ -9,6 +9,8 @@ gem 'rails_12factor', group: :production
 
 gem 'figaro'
 
+gem "haml-rails"
+
 gem 'bootstrap-sass'
 
 # Use SCSS for stylesheets
@@ -49,7 +51,5 @@ gem 'bcrypt-ruby' #, '~> 3.0.0'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
-gem "haml"
 
 ruby '2.0.0'

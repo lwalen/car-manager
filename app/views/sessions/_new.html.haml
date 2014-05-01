@@ -1,0 +1,18 @@
+%header
+  %h1 Sign In
+
+= form_tag '/signin', method: 'post' do
+  .form-group
+    = label_tag :username, 'Username'
+    = text_field_tag :username, params[:username], 'autocapitalize' => 'none', class: 'form-control'
+
+  .form-group
+    = label_tag :password, 'Password'
+    = password_field_tag :password, params[:password], class: 'form-control'
+
+  .checkbox
+    = label_tag do
+      = check_box_tag :remember_me, 1, params[:remember_me]
+      Remember Me
+
+  = submit_tag "Sign In", class: 'btn btn-primary btn-lg'

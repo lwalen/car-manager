@@ -8,4 +8,7 @@ $(document).ready(function() {
 			$(this).children('.actions').children().css('visibility', 'hidden');
 		}
 	});
+
+	$('#record_mileage').autoNumeric();
+	$('#record_cost').autoNumeric({aSign: '$', mDec: '2'});
 });

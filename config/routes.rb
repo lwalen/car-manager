@@ -1,7 +1,11 @@
 GasTracker::Application.routes.draw do
   
+  get 'pages/index'
+
   get "records/new"
   get "records/create"
+  get "records/upload"
+  post "records/add_multiple"
 	get 'register' => 'users#new'
 	get 'signout' => 'sessions#destroy'
 
@@ -11,7 +15,7 @@ GasTracker::Application.routes.draw do
 		delete 'signout' => :destroy
 	end
 
-	root to: 'users#index'
+	root to: 'pages#index'
 	resources :users
 	resources :cars do
 		member do
