@@ -1,8 +1,9 @@
-= simple_form_for Record.new, html: {class: 'form-vertical', role: 'form'}, defaults: { input_html: {autocomplete: 'off'}} do |r|
-  = r.hidden_field :car_id, value: @car.id
-  
-  = r.input :date, autocomplete: 'off'
-  = r.input :mileage, as: :string, input_html: { pattern: '\d*' }
-  = r.input :gallons, autocomplete: 'off'
-  = r.input :cost, as: :string, input_html: { pattern: '\d*', 'data-a-sign' => '$' }
-  = r.button :submit, '+'
+-#
+  = simple_form_for Record.new, html: {class: 'form-vertical', role: 'form'}, defaults: { input_html: {autocomplete: 'off'}} do |r|
+    = r.hidden_field :car_id, value: @car.id
+    
+    = r.input :date, autocomplete: 'off'
+    = r.input :mileage, as: :string, input_html: { pattern: '\d*' }
+    = r.input :gallons, autocomplete: 'off'
+    = r.input :cost, as: :string, input_html: { pattern: '\d*', 'data-a-sign' => '$' }
+    = r.button :submit, '+'
