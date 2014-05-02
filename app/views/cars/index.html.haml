@@ -1,14 +1,23 @@
-%h1 Cars
-%ul
-	- @cars.each do |car|
-		%li
-			.name
-				%h4= link_to car, car_path(car.id)
-				= image_tag("star.png", alt: "Primary", title: "Primary") if car.primary?
-				= link_to(image_tag("empty_star.png"), 
-					make_primary_car_path(car.id), 
-					title: "Click to make primary") if !car.primary?
-			= link_to 'Edit', edit_car_path(car.id)
-			= link_to 'Delete', car, method: :delete,
-				confirm: 'Are you sure you wish to delete this car? This will also delete all records associated with this car, and cannot be undone.'
-	= render 'cars/new'
+
+.col-sm-8
+  %h1 Cars
+  %ul.list-group
+  - @cars.each do |car|
+    %li.list-group-item
+      - if car.primary?
+        %span.glyphicon.glyphicon-star
+      - else
+        = link_to make_primary_car_path(car.id) do
+          %span.glyphicon.glyphicon-star-empty
+      %h4{style: "display: inline; margin-left: 10px"}= link_to car, car_path(car.id)
+      = "(#{car.records.count} record#{'s' if car.records.count != 1})"
+      -#
+        = link_to 'Edit', edit_car_path(car.id)
+        = link_to 'Delete', car, method: :delete,
+        confirm: 'Are you sure you wish to delete this car? This will also delete all records associated with this car, and cannot be undone.'
+      = link_to edit_car_path(car.id) do
+        %span.glyphicon.glyphicon-pencil.pull-right
+
+.col-sm-6
+  %br
+  = render 'cars/new'

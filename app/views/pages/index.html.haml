@@ -1,4 +1,7 @@
 
-= render 'sessions/new'
-%hr
-= render 'users/new'
+.col-sm-5
+  = render 'sessions/new'
+.col-sm-5.col-sm-offset-2
+  %br
+  %br
+  = link_to "I don't have an account", new_user_path, class: 'btn btn-warning btn-lg'

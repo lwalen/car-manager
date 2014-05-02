@@ -1,5 +1,6 @@
-%hr
 %h4 New Car
 = form_for Car.new, html: {class: 'add-car'} do |f|
-	= f.text_field :name, placeholder: 'Name'
-	= f.submit 'Add'
+  .input-group
+    = f.text_field :name, placeholder: 'Name', class: 'form-control'
+    .input-group-btn
+      = f.submit 'Add', class: 'btn btn-default'
