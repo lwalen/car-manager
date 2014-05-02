@@ -6,11 +6,6 @@ class CarsController < ApplicationController
   def show
     @car = Car.find(params[:id])
     @records = @car.records.order(:mileage)
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @car }
-    end
   end
 
   def new
@@ -24,15 +19,11 @@ class CarsController < ApplicationController
       @car.main = true
     end
 
-    respond_to do |format|
-      if @car.save
-        message 'success', "Car #{@car.name} was successfully created."
-        format.html { redirect_to cars_url }
-        format.json { render json: @car, status: :created, location: @car }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @car.errors, status: :unprocessable_entity }
-      end
+    if @car.save
+      message 'success', "Car #{@car.name} was successfully created."
+      redirect_to cars_url
+    else
+      render action: "new"
     end
   end
 
@@ -47,29 +38,17 @@ class CarsController < ApplicationController
   def update
     @car = Car.find(params[:id])
 
-    respond_to do |format|
-      if @car.update_attributes(params[:car])
-        message 'success', "Car '#{@car.name}' was successfully updated."
-        format.html { redirect_to user_path(@car.user_id) }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @car.errors, status: :unprocessable_entity }
-      end
+    if @car.update_attributes(params[:car])
+      message 'success', "Car '#{@car.name}' was successfully updated."
+      redirect_to user_path(@car.user_id)
+    else
+      render action: "edit"
     end
   end
 
   def destroy
     @car = Car.find(params[:id])
-
-=begin
-    if @car.primary?
-      @new_primary = Car.where("main = 'f'").first
-      @new_primary.main = true
-      @new_primary.save
-    end
-=end
-
+    
     if current_user.id == @car.user_id
       name = @car.name
       @car.destroy

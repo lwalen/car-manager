@@ -14,8 +14,8 @@ class SessionsController < ApplicationController
 			message 'success', "Welcome, #{user}!"
 			redirect_to car_path(user.primary_car)
 		else
-			message 'error', "Invalid user/password combination."
-			redirect_to signin_url
+			message 'danger', "Invalid user/password combination."
+			redirect_to root_path
 		end
 	end
 

@@ -6,20 +6,20 @@ GasTracker::Application.routes.draw do
   get "records/create"
   get "records/upload"
   post "records/add_multiple"
+
 	get 'register' => 'users#new'
 	get 'signout' => 'sessions#destroy'
 
 	controller :sessions do
 		get 'signin' => :new
 		post 'signin' => :create
-		delete 'signout' => :destroy
+		#delete 'signout' => :destroy
 	end
 
-	root to: 'pages#index'
 	resources :users
 	resources :cars do
 		member do
-			get 'make_primary'
+			post 'make_primary'
 		end
 	end
 	resources :records do
@@ -28,6 +28,8 @@ GasTracker::Application.routes.draw do
 			get 'disable_stats'
 		end
 	end
+
+  root to: 'pages#index'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
