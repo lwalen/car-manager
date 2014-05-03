@@ -1,22 +1,22 @@
+.row
+  .col-sm-8
+    %h1 Cars
+    - if @cars.empty?
+      You don't have any cars!
+    - else
+      %ul.list-group
+      - @cars.each do |car|
+        %li.list-group-item
+          - if car.primary?
+            %span.glyphicon.glyphicon-star
+          - else
+            = link_to make_primary_car_path(car.id), method: :post do
+              %span.glyphicon.glyphicon-star-empty>
+          %h4.car= link_to car, car_path(car.id)
+          = "(#{car.records.count} record#{'s' if car.records.count != 1})"
+          = link_to edit_car_path(car.id) do
+            %span.glyphicon.glyphicon-pencil.pull-right
 
-.col-sm-8
-  %h1 Cars
-  - if @cars.empty?
-    You don't have any cars!
-  - else
-    %ul.list-group
-    - @cars.each do |car|
-      %li.list-group-item
-        - if car.primary?
-          %span.glyphicon.glyphicon-star
-        - else
-          = link_to make_primary_car_path(car.id), method: :post do
-            %span.glyphicon.glyphicon-star-empty>
-        %h4.car= link_to car, car_path(car.id)
-        = "(#{car.records.count} record#{'s' if car.records.count != 1})"
-        = link_to edit_car_path(car.id) do
-          %span.glyphicon.glyphicon-pencil.pull-right
-
-.col-sm-8
-  %br
-  = render 'cars/new'
+  .col-sm-8
+    %br
+    = render 'cars/new'

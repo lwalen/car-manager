@@ -14,8 +14,8 @@ $(document).ready(function() {
 		var year  = d.getFullYear();
 		var month = d.getMonth() + 1;
 		var date  = d.getDate();
-		var today = month.toString() + '.'
-			+ date.toString() + '.'
+		var today = date.toString() + '.'
+			+ month.toString() + '.'
 			+ year.toString();
 		$('#record_date').val(today);
 	});
