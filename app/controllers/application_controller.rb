@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 	end
 
 	def user_signed_in?
-		cookies[:auth_token] ? true :	false
+		current_user ? true :	false
 	end
 
 	def message(type, content)

@@ -11,12 +11,12 @@
           %span.glyphicon.glyphicon-star
         - else
           = link_to make_primary_car_path(car.id), method: :post do
-            %span.glyphicon.glyphicon-star-empty
-        %h4{style: "display: inline; margin-left: 10px"}= link_to car, car_path(car.id)
+            %span.glyphicon.glyphicon-star-empty>
+        %h4.car= link_to car, car_path(car.id)
         = "(#{car.records.count} record#{'s' if car.records.count != 1})"
         = link_to edit_car_path(car.id) do
           %span.glyphicon.glyphicon-pencil.pull-right
 
-.col-sm-6
+.col-sm-8
   %br
   = render 'cars/new'

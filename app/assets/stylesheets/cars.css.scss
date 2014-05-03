@@ -2,3 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+h4.car {
+	display: inline;
+}
+
+.glyphicon-star, .glyphicon-star-empty {
+	font-size: 1.4em;
+	margin-right: 8px;
+
+	color: black;
+	a {
+		text-decoration: none;
+	}
+}
