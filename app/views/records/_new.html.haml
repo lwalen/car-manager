@@ -1,14 +1,28 @@
-.row
-  .col-sm-8
-    %h4 Add Record
-    = form_for Record.new, html: {class: 'form-vertical'} do |f|
-      = f.hidden_field :car_id, value: @car.id
+%h4 Add Record
+= form_for Record.new, html: {class: 'form-horizontal'} do |f|
+  = f.hidden_field :car_id, value: @car.id
+
+  .form-group
+    = f.label :date, class: 'control-label col-sm-2'
+    .col-sm-4
       .input-group
         .input-group-btn
           .btn.btn-default#today Today
-        = f.text_field :date, class: 'form-control', placeholder: 'Date'
+        = f.text_field :date, class: 'form-control'
 
-      = f.text_field :mileage, class: 'form-control', placeholder: 'Mileage'
-      = f.text_field :gallons, class: 'form-control', placeholder: 'Gallons'
-      = f.text_field :cost, class: 'form-control', placeholder: 'Cost'
-      = f.submit 'add', class: 'btn btn-primary'
+  .form-group
+    = f.label :mileage, class: 'control-label col-sm-2'
+    .col-sm-4
+      = f.text_field :mileage, class: 'form-control'
+
+  .form-group
+    = f.label :gallons, class: 'control-label col-sm-2'
+    .col-sm-4
+      = f.text_field :gallons, class: 'form-control'
+
+  .form-group
+    = f.label :cost, class: 'control-label col-sm-2'
+    .col-sm-4
+      = f.text_field :cost, class: 'form-control'
+
+  = f.submit 'add', class: 'btn btn-primary col-sm-offset-2'
