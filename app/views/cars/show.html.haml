@@ -1,16 +1,17 @@
 %header
 	%h1= @car
-	.stats
-		%p
-			%em Average MPG:
-			= number_with_precision @car.mpg, precision: 3
-		%p
-			%em Cost per month:
-		%p
-			%em Gallons per month:
+	-#
+		.stats
+			%p
+				%em Average MPG:
+				= number_with_precision @car.mpg, precision: 3
+			%p
+				%em Cost per month:
+			%p
+				%em Gallons per month:
+= render 'records/new'
 #records
 	- if @records.empty?
 		%p no records yet!
 	- else
 		= render partial: 'records/list', locals: {records: @records}
-= render 'records/new'
