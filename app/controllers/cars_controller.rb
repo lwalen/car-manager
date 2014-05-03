@@ -6,6 +6,13 @@ class CarsController < ApplicationController
   def show
     @car = Car.find(params[:id])
     @records = @car.records.order(:mileage)
+
+    filename = "#{@car.name.tr(' ', '_')}.csv"
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @car.to_csv, filename: filename }
+    end
   end
 
   def new

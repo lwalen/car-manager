@@ -1,6 +1,8 @@
 
 %header
-	%h1= @car
+	%h1
+		= @car
+		= link_to "export", car_path(format: "csv")
 	-#
 		.stats
 			%p
