@@ -1,8 +1,10 @@
 
 %header
-	%h1
+	%h1{style: "margin-top: 0px"}
 		= @car
-		= link_to "export", car_path(format: "csv")
+	= number_with_precision @car.mpg, precision: 2
+	mpg
+	= link_to "export", car_path(format: "csv"), class: "hidden-xs"
 	-#
 		.stats
 			%p
@@ -12,7 +14,9 @@
 				%em Cost per month:
 			%p
 				%em Gallons per month:
+%hr
 = render 'records/new'
+%br
 #records
 	- if @records.empty?
 		%p no records yet!

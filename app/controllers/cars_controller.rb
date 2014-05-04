@@ -5,7 +5,7 @@ class CarsController < ApplicationController
 
   def show
     @car = Car.find(params[:id])
-    @records = @car.records.order(:mileage)
+    @records = @car.records.order('mileage DESC').limit(10)
 
     filename = "#{@car.name.tr(' ', '_')}.csv"
 

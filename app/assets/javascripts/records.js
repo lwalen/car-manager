@@ -1,5 +1,6 @@
 
 $(document).ready(function() {
+
 	$('table tbody tr').on({
 		mouseover: function() {
 			$(this).children('.actions').children().css('visibility', 'visible');
@@ -8,15 +9,17 @@ $(document).ready(function() {
 			$(this).children('.actions').children().css('visibility', 'hidden');
 		}
 	});
+	
+	var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+	var d = new Date();
+	var year  = d.getFullYear();
+	var month = months[d.getMonth()];
+	var date  = d.getDate();
+	var today = month + ' '
+		+ date.toString() + ', '
+		+ year.toString();
 
 	$('#today').click(function() {
-		var d = new Date();
-		var year  = d.getFullYear();
-		var month = d.getMonth() + 1;
-		var date  = d.getDate();
-		var today = date.toString() + '.'
-			+ month.toString() + '.'
-			+ year.toString();
 		$('#record_date').val(today);
 	});
 });
