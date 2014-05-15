@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
+
   def index
-    if user_signed_in?
+    if current_user
       if current_user.cars.empty?
         redirect_to cars_path
       else

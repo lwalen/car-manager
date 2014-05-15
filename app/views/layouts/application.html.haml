@@ -18,11 +18,11 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          = link_to "Gas Tracker", root_url, class: 'navbar-brand', title: "#{"View primary car" if user_signed_in?}"
+          = link_to "Gas Tracker", root_url, class: 'navbar-brand', title: "#{"View primary car" if current_user}"
 
         .collapse.navbar-collapse#navbar-collapse
           %ul.nav.navbar-nav.navbar-right
-            - if user_signed_in?
+            - if current_user
               %li= link_to "Cars", cars_url
               %li= link_to "Sign Out", signout_url
             - else

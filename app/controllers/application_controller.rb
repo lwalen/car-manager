@@ -9,14 +9,6 @@ class ApplicationController < ActionController::Base
 		User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
 	end
 
-	def signout_current_user
-		cookie[:auth_token] = nil
-	end
-
-	def user_signed_in?
-		current_user ? true :	false
-	end
-
 	def message(type, content)
 		flash[:notice_type] = type
 		flash[:notice] = content

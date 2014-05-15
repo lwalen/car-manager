@@ -1,28 +1,18 @@
 GasTracker::Application.routes.draw do
   
-  get 'services/new'
-
-  get 'services/create'
-
-  get 'services/destroy'
 
   get 'pages/index'
 
-  get "records/new"
-  get "records/create"
-  get "records/upload"
-  post "records/add_multiple"
-
 	get 'register' => 'users#new'
-	get 'signout' => 'sessions#destroy'
 
 	controller :sessions do
 		get 'signin' => :new
 		post 'signin' => :create
-		#delete 'signout' => :destroy
+		get 'signout' => :destroy
 	end
 
 	resources :users
+
 	resources :cars do
 		member do
 			post 'make_primary'
@@ -33,8 +23,12 @@ GasTracker::Application.routes.draw do
 		member do
 			get 'enable_stats'
 			get 'disable_stats'
+      get 'upload'
+      post 'add_multiple'
 		end
 	end
+
+  resources :services
 
   root to: 'pages#index'
 
