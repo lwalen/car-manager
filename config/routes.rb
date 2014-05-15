@@ -1,5 +1,11 @@
 GasTracker::Application.routes.draw do
   
+  get 'services/new'
+
+  get 'services/create'
+
+  get 'services/destroy'
+
   get 'pages/index'
 
   get "records/new"

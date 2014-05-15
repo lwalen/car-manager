@@ -2,22 +2,13 @@
 %header
 	%h1{style: "margin-top: 0px"}
 		= @car
-	= number_with_precision @car.mpg, precision: 2
-	mpg
 	= link_to "export", car_path(format: "csv"), class: "hidden-xs"
-	-#
-		.stats
-			%p
-				%em Average MPG:
-				= number_with_precision @car.mpg, precision: 3
-			%p
-				%em Cost per month:
-			%p
-				%em Gallons per month:
 %br
 %ul.nav.nav-tabs
 	%li.active= link_to 'Gas', '#gas', data: { toggle: 'tab' }
 	%li= link_to 'Service', '#service', data: { toggle: 'tab' }
+	%li.pull-right
+		.mpg= "#{number_with_precision @car.mpg, precision: 2} mpg"
 .tab-content
 	.tab-pane.active#gas
 		= render 'records/new'
@@ -28,4 +19,5 @@
 			- else
 				= render partial: 'records/list', locals: {records: @records}
 	.tab-pane#service
-		=# render 'service/new'
+		= render 'services/new'
+		= render 'services/list'
