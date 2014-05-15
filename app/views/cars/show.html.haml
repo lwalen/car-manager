@@ -5,7 +5,6 @@
 	= number_with_precision @car.mpg, precision: 2
 	mpg
 	= link_to "export", car_path(format: "csv"), class: "hidden-xs"
-	= link_to "service", service_car_path
 	-#
 		.stats
 			%p
@@ -15,11 +14,18 @@
 				%em Cost per month:
 			%p
 				%em Gallons per month:
-%hr
-= render 'records/new'
 %br
-#records
-	- if @records.empty?
-		%p no records yet!
-	- else
-		= render partial: 'records/list', locals: {records: @records}
+%ul.nav.nav-tabs
+	%li.active= link_to 'Gas', '#gas', data: { toggle: 'tab' }
+	%li= link_to 'Service', '#service', data: { toggle: 'tab' }
+.tab-content
+	.tab-pane.active#gas
+		= render 'records/new'
+		%br
+		#records
+			- if @records.empty?
+				%p no records yet!
+			- else
+				= render partial: 'records/list', locals: {records: @records}
+	.tab-pane#service
+		=# render 'service/new'
