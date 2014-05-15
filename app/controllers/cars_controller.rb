@@ -59,7 +59,7 @@ class CarsController < ApplicationController
     if current_user.id == @car.user_id
       name = @car.name
       @car.destroy
-      message 'success', "#{name} deleted successfully."
+      message 'success', "#{name} deleted successfully. Undo?", false
       redirect_to cars_url
     else
       message 'danger', "You do not have permission to delete this car."

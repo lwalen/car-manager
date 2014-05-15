@@ -31,7 +31,10 @@
 
     .container
       - if flash[:notice]
-        .alert.alert-dismissable{class: "alert-#{flash[:notice_type]}"}
-          %button.close{type: 'button', 'data-dismiss' => "alert", 'aria-hidden' => true} &times;
-          = notice
+        - if flash[:notice_fade]
+          .alert{class: "alert-#{flash[:notice_type]} fading"}= notice
+        - else
+          .alert.alert-dismissable{class: "alert-#{flash[:notice_type]}"}
+            %button.close{type: 'button', 'data-dismiss' => "alert", 'aria-hidden' => true} &times;
+            = notice
       = yield

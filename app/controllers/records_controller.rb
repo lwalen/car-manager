@@ -50,7 +50,7 @@ class RecordsController < ApplicationController
     if current_user.id == car.user_id
       @record.destroy
       car.update_mpg
-      message 'success', "Record deleted successfully."
+      message 'success', "Record deleted successfully. Undo?", false
       redirect_to car
     else
       message 'error', "You do not have permission to delete this record."
