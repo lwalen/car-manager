@@ -81,6 +81,10 @@ class CarsController < ApplicationController
     end
   end
 
+  def service
+
+  end
+
   private
   def car_params
     params.require(:car).permit(:name)

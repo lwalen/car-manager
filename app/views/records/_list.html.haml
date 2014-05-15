@@ -1,26 +1,29 @@
 
 %table.table.records
-	%thead
-		%tr
-			%th Date
-			%th Mileage
-			%th Gallons
-			%th Cost
-			-#
-				%th Miles
-				%th MPG
-				%th
-	%tbody>
-		- records.each_with_index do |rec, i|
-			%tr{class: ("no-stat" if !rec.stat?)}
-				%td.date
-					= rec.date.strftime('%b %-d')
-				%td= rec.mileage.to_s.scan(/.{1,3}/).join(' ')
-				%td= number_with_precision(rec.gallons, precision: 2)
-				%td= number_to_currency(rec.cost)
-				-# %td= rec.mileage - records[i-1].mileage if i != 0 && rec.stat?
-				-# %td= number_with_precision((rec.mileage - records[i-1].mileage) / rec.gallons, precision: 2) if i != 0 && rec.stat?
-				-# %td.actions
-					= link_to 'stats: yes', enable_stats_record_path(rec.id) if !rec.stat?
-					= link_to 'stats: no', disable_stats_record_path(rec.id) if rec.stat?
-					= link_to 'delete', rec, method: :delete
+  %thead
+    %tr
+      %th Date
+      %th Mileage
+      %th Gallons
+      %th Cost
+      %th
+      -#
+        %th Miles
+        %th MPG
+        %th
+  %tbody>
+    - records.each_with_index do |rec, i|
+      %tr{class: ("no-stat" if !rec.stat?)}
+        %td.date
+          = rec.date.strftime('%b %-d')
+        %td= rec.mileage.to_s.scan(/.{1,3}/).join(' ')
+        %td= number_with_precision(rec.gallons, precision: 2)
+        %td= number_to_currency(rec.cost)
+        -# %td= rec.mileage - records[i-1].mileage if i != 0 && rec.stat?
+        -# %td= number_with_precision((rec.mileage - records[i-1].mileage) / rec.gallons, precision: 2) if i != 0 && rec.stat?
+        %td
+          =# link_to 'stats: yes', enable_stats_record_path(rec.id) if !rec.stat?
+          =# link_to 'stats: no', disable_stats_record_path(rec.id) if rec.stat?
+          = link_to rec, method: :delete, data: { confirm: "Are you sure?" } do
+            %span.glyphicon.glyphicon-remove.text-danger
+

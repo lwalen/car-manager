@@ -20,8 +20,10 @@ GasTracker::Application.routes.draw do
 	resources :cars do
 		member do
 			post 'make_primary'
+      get 'service'
 		end
 	end
+
 	resources :records do
 		member do
 			get 'enable_stats'

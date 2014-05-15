@@ -5,6 +5,7 @@
 	= number_with_precision @car.mpg, precision: 2
 	mpg
 	= link_to "export", car_path(format: "csv"), class: "hidden-xs"
+	= link_to "service", service_car_path
 	-#
 		.stats
 			%p
