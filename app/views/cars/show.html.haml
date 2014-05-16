@@ -15,7 +15,7 @@
 		%br
 		#records
 			- unless @records.empty?
-				= render partial: 'records/list', locals: {records: @records}
+				= render partial: 'records/list', locals: {records: @records, limit: @limit, total: @total}
 	.tab-pane#service
 		= render 'services/new'
 		= render 'services/list'

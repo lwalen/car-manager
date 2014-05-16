@@ -2,6 +2,7 @@ class Record < ActiveRecord::Base
 
   belongs_to :car
   after_save :update_mpg
+  after_destroy :update_mpg
 
   def update_mpg
     self.car.update_mpg
