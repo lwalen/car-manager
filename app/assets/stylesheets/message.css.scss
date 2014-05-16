@@ -1,0 +1,15 @@
+.alert {
+	position: absolute;
+	top: 70px;
+	right: 0;
+	left: 0;
+	margin: 0 auto;
+	width: 90%;
+}
+
+@media (min-width: 768px) {
+	.alert {
+		width: 45%;
+		left: 250px;
+	}
+}
