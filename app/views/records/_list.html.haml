@@ -22,8 +22,11 @@
         -# %td= rec.mileage - records[i-1].mileage if i != 0 && rec.stat?
         -# %td= number_with_precision((rec.mileage - records[i-1].mileage) / rec.gallons, precision: 2) if i != 0 && rec.stat?
         %td
-          =# link_to 'stats: yes', enable_stats_record_path(rec.id) if !rec.stat?
-          =# link_to 'stats: no', disable_stats_record_path(rec.id) if rec.stat?
+          = link_to '#' do
+            %span.glyphicon.glyphicon-chevron-right
+        -# %td
+          = link_to 'stats: yes', enable_stats_record_path(rec.id) if !rec.stat?
+          = link_to 'stats: no', disable_stats_record_path(rec.id) if rec.stat?
           = link_to rec, method: :delete, data: { confirm: "Are you sure you want to delete this record?" } do
             %span.glyphicon.glyphicon-remove.text-danger
 
