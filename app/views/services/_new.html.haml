@@ -1,1 +1,30 @@
 %h3 Add Service
+= form_for Record.new, html: {class: 'form-horizontal'} do |f|
+  = f.hidden_field :car_id, value: @car.id
+
+  .form-group
+    = f.label :date, class: 'control-label col-xs-3'
+    .col-xs-9
+      .input-group
+        .input-group-btn
+          .btn.btn-default#today Today
+        = f.text_field :date, class: 'form-control', autocomplete: 'off', 'data-today' => Date.today.strftime("%b %-d, %Y")
+
+  .form-group
+    = f.label :mileage, class: 'control-label col-xs-3'
+    .col-xs-9
+      = f.number_field :mileage, class: 'form-control', autocomplete: 'off'
+
+  -# this should be one of those select/text field hybrids. type gets saved in its own table (probably with an after_save in the service model), and these are used to populate the select functionality
+  .form-group
+    = label_tag :type, nil, class: 'control-label col-xs-3'
+    .col-xs-9
+      = text_field_tag :type, nil, class: 'form-control', autocomplete: 'off'
+
+  .form-group
+    = label_tag :notes, nil, class: 'control-label col-xs-3'
+    .col-xs-9
+      = text_area_tag :notes, nil, class: 'form-control', autocomplete: 'off'
+
+  .text-right
+    = f.submit 'add', class: 'btn btn-primary btn-lg'

@@ -6,7 +6,7 @@
       %th Mileage
       %th Gallons
       %th Cost
-      %th
+      %th.hidden-xs
       -#
         %th Miles
         %th MPG
@@ -21,10 +21,7 @@
         %td= number_to_currency(rec.cost)
         -# %td= rec.mileage - records[i-1].mileage if i != 0 && rec.stat?
         -# %td= number_with_precision((rec.mileage - records[i-1].mileage) / rec.gallons, precision: 2) if i != 0 && rec.stat?
-        %td
-          = link_to '#' do
-            %span.glyphicon.glyphicon-chevron-right
-        -# %td
+        %td.hidden-xs
           = link_to 'stats: yes', enable_stats_record_path(rec.id) if !rec.stat?
           = link_to 'stats: no', disable_stats_record_path(rec.id) if rec.stat?
           = link_to rec, method: :delete, data: { confirm: "Are you sure you want to delete this record?" } do
