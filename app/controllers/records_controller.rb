@@ -6,7 +6,6 @@ class RecordsController < ApplicationController
     @record = Record.find(params[:id])
     @record.stat = true
     @record.save
-    @record.car.update_mpg
     redirect_to @record.car
   end
 
@@ -14,7 +13,6 @@ class RecordsController < ApplicationController
     @record = Record.find(params[:id])
     @record.stat = false
     @record.save
-    @record.car.update_mpg
     redirect_to @record.car
   end
 
@@ -35,7 +33,6 @@ class RecordsController < ApplicationController
     end
 
     if @record.save
-      @record.car.update_mpg
       @records = @record.car.records
       message 'success', "Record successfully created."
       redirect_to @record.car
@@ -49,7 +46,6 @@ class RecordsController < ApplicationController
     car = @record.car
     if current_user.id == car.user_id
       @record.destroy
-      car.update_mpg
       message 'success', "Record deleted successfully."
       redirect_to car
     else
