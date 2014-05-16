@@ -9,9 +9,8 @@ class ApplicationController < ActionController::Base
     User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
   end
 
-  def message(type, content, fading = true)
+  def message(type, content)
     flash[:notice_type] = type
     flash[:notice] = content
-    flash[:notice_fade] = fading
   end
 end
