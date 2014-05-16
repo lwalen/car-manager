@@ -1,21 +1,25 @@
 
 %header
-	%h1
-		= @car
-	= link_to "export", car_path(format: "csv"), class: "hidden-xs"
+  %h1
+    = @car
+  = link_to "export", car_path(format: "csv"), class: "hidden-xs"
 %br
 %ul.nav.nav-tabs
-	%li.active= link_to 'Gas', '#gas', data: { toggle: 'tab' }
-	%li= link_to 'Service', '#service', data: { toggle: 'tab' }
-	%li.pull-right
-		.mpg= "#{number_with_precision @car.mpg, precision: 2} mpg"
+  %li.active= link_to 'Gas', '#gas', data: { toggle: 'tab' }
+  %li= link_to 'Service', '#service', data: { toggle: 'tab' }
+  %li.pull-right
+    .mpg= "#{number_with_precision @car.mpg, precision: 2} mpg"
 .tab-content
-	.tab-pane.active#gas
-		= render 'records/new'
-		%br
-		#records
-			- unless @records.empty?
-				= render partial: 'records/list', locals: {records: @records, limit: @limit, total: @total}
-	.tab-pane#service
-		= render 'services/new'
-		= render 'services/list'
+  .tab-pane.active#gas
+    = render 'records/new'
+    %br
+    #records
+      - unless @records.empty?
+        = render partial: 'records/list', locals: {records: @records, remaining: @remaining}
+        - unless @remaining <= 0
+          %p.text-center
+            = link_to "Show #{@remaining} remaining record#{add_s(@remaining)}.", '#'
+        %br
+  .tab-pane#service
+    = render 'services/new'
+    = render 'services/list'
