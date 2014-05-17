@@ -16,8 +16,14 @@
         %td= number_to_currency(rec.cost)
 
         %td.hidden-xs
-          = link_to 'stats: yes', enable_stats_record_path(rec.id) if !rec.stat?
-          = link_to 'stats: no', disable_stats_record_path(rec.id) if rec.stat?
+          - if rec.stat?
+            = link_to disable_stats_record_path(rec.id) do
+              stats?
+              = check_box_tag :stats, 1, true
+          - else
+            = link_to enable_stats_record_path(rec.id) do
+              stats?
+              = check_box_tag :stats, 1, false
           |
           = link_to 'delete', rec, method: :delete, data: { confirm: "Are you sure you want to delete this record?" }
 

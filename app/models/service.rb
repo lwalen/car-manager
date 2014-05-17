@@ -1,9 +1,8 @@
 class Service < ActiveRecord::Base
   belongs_to :car
-  has_one :service_type
-
+  belongs_to :service_type
 
   def to_s
-    "#{self.date} #{self.mileage} #{self.type} #{self.notes}"
+    "#{self.date} #{self.mileage} #{self.service_type} #{self.notes}"
   end
 end

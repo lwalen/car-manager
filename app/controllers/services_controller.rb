@@ -4,7 +4,12 @@ class ServicesController < ApplicationController
   end
 
   def create
-    @service = Service.new(service_params)
+    p = service_params
+    service_type = p[:service_type]
+    p[:service_type] = ServiceType.find_by_name(p[:service_type]) ||
+      ServiceType.create(name: p[:service_type], user: current_user)
+
+    @service = Service.new(p)
     @service.date = @service.date.strftime('%Y-%m-%d')
 
     if @service.save
@@ -31,6 +36,6 @@ class ServicesController < ApplicationController
 
   private
   def service_params
-    params.require(:service).permit(:car_id, :date, :mileage, :type, :notes)
+    params.require(:service).permit(:car_id, :date, :mileage, :service_type, :notes)
   end
 end
