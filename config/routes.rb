@@ -1,6 +1,12 @@
 GasTracker::Application.routes.draw do
   
 
+  get 'service_types/new'
+
+  get 'service_types/create'
+
+  get 'service_types/destroy'
+
   get 'pages/index'
 
 	get 'register' => 'users#new'

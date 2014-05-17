@@ -1,19 +1,6 @@
 class RecordsController < ApplicationController
+
   def new
-  end
-
-  def enable_stats
-    @record = Record.find(params[:id])
-    @record.stat = true
-    @record.save
-    redirect_to @record.car
-  end
-
-  def disable_stats
-    @record = Record.find(params[:id])
-    @record.stat = false
-    @record.save
-    redirect_to @record.car
   end
 
   def create
@@ -62,6 +49,20 @@ class RecordsController < ApplicationController
       #message 'success', params[:new_records][:content]
       message 'success', "Added X records to CAR"
       redirect_to cars_url
+  end
+
+  def enable_stats
+    @record = Record.find(params[:id])
+    @record.stat = true
+    @record.save
+    redirect_to @record.car
+  end
+
+  def disable_stats
+    @record = Record.find(params[:id])
+    @record.stat = false
+    @record.save
+    redirect_to @record.car
   end
 
   private
