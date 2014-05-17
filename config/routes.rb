@@ -22,6 +22,7 @@ GasTracker::Application.routes.draw do
 	resources :cars do
 		member do
 			post 'make_primary'
+      get 'more_records'
 		end
 	end
 
