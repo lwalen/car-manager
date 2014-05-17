@@ -19,7 +19,7 @@
   .form-group
     = f.label :type, class: 'control-label col-xs-3'
     .col-xs-9
-      = f.text_field :type, class: 'form-control', autocomplete: 'off'
+      = f.select :type, options_for_select([['Lisbon', 1], ['Madrid', 2]]), class: 'form-control', autocomplete: 'off'
 
   .form-group
     = f.label :notes, class: 'control-label col-xs-3'
