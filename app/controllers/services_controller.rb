@@ -4,11 +4,11 @@ class ServicesController < ApplicationController
   end
 
   def create
-    @service = Service.new(record_params)
+    @service = Service.new(service_params)
     @service.date = @service.date.strftime('%Y-%m-%d')
 
     if @service.save
-      @services = @services.car.services
+      @services = @service.car.services
       message 'success', "Service successfully created."
       redirect_to @service.car
     else

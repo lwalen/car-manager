@@ -1,6 +1,7 @@
 class Car < ActiveRecord::Base
 
   has_many :records
+  has_many :services
 
   def update_mpg
     mpg = []
