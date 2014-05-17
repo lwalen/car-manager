@@ -7,8 +7,8 @@
     .col-xs-9
       .input-group
         .input-group-btn
-          .btn.btn-default#today Today
-        = f.text_field :date, class: 'form-control', autocomplete: 'off', 'data-today' => Date.today.strftime("%b %-d, %Y")
+          .btn.btn-default.today Today
+        = f.text_field :date, class: 'form-control date', autocomplete: 'off'
 
   .form-group
     = f.label :mileage, class: 'control-label col-xs-3'
