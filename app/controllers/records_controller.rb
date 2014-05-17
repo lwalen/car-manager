@@ -51,17 +51,17 @@ class RecordsController < ApplicationController
       redirect_to cars_url
   end
 
-  def enable_stats
-    @record = Record.find(params[:id])
-    @record.stat = true
-    @record.save
-    redirect_to @record.car
+  def stat?
+    @record.stat == 't'
   end
 
-  def disable_stats
+  def toggle_stats
     @record = Record.find(params[:id])
-    @record.stat = false
-    @record.save
+    if @record.stat?
+      @record.update(stat: false)
+    else
+      @record.update(stat: true)
+    end
     redirect_to @record.car
   end
 

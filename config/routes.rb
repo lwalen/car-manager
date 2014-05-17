@@ -27,8 +27,7 @@ GasTracker::Application.routes.draw do
 
 	resources :records do
 		member do
-			get 'enable_stats'
-			get 'disable_stats'
+      post 'toggle_stats'
       get 'upload'
       post 'add_multiple'
 		end
