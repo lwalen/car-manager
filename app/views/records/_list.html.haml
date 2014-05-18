@@ -1,5 +1,5 @@
 
-%table.table
+%table.table.table-hover.records
   %thead
     %tr
       %th Date
@@ -9,15 +9,16 @@
       %th.hidden-xs
   %tbody>
     - records.each do |rec|
-      %tr
+      %tr{class: "#{'no-stat' unless rec.stat?}"}
         %td= rec.date.strftime('%b %-d')
         %td= number_with_delimiter(rec.mileage, delimiter: ',')
         %td= number_with_precision(rec.gallons, precision: 2)
         %td= number_to_currency(rec.cost)
 
         %td.hidden-xs.text-right
-          = link_to toggle_stats_record_path(rec.id), method: :post, class: "btn btn-xs btn-default" do
-            stats
-            %span.glyphicon{class: "glyphicon-#{rec.stat? ? 'ok' : 'none'}"}
-          = link_to 'delete', rec, method: :delete, class: "btn btn-xs btn-danger", data: { confirm: "Are you sure you want to delete this record?" }
+          .actions
+            = link_to toggle_stats_record_path(rec.id), method: :post, class: "btn btn-xs btn-default" do
+              stats
+              %span.glyphicon{class: "glyphicon-#{rec.stat? ? 'ok' : 'none'}"}
+            = link_to 'delete', rec, method: :delete, class: "btn btn-xs btn-danger", data: { confirm: "Are you sure you want to delete this record?" }
 
