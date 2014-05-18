@@ -15,7 +15,7 @@ class ServicesController < ApplicationController
     if @service.save
       @services = @service.car.services
       message 'success', "Service successfully created."
-      redirect_to @service.car
+      redirect_to car_path(@service.car, :anchor => 'tab_service')
     else
       render action: "new"
     end
@@ -27,7 +27,7 @@ class ServicesController < ApplicationController
     if current_user.id == car.user_id
       @service.destroy
       message 'success', "Service deleted successfully."
-      redirect_to car
+      redirect_to car_path(car, :anchor => 'tab_service')
     else
       message 'error', "You do not have permission to delete this service."
       redirect_to cars_url

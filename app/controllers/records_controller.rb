@@ -22,7 +22,7 @@ class RecordsController < ApplicationController
     if @record.save
       @records = @record.car.records
       message 'success', "Record successfully created."
-      redirect_to @record.car
+      redirect_to car_path(@record.car, :anchor => 'tab_gas')
     else
       render action: "new"
     end
@@ -34,7 +34,7 @@ class RecordsController < ApplicationController
     if current_user.id == car.user_id
       @record.destroy
       message 'success', "Record deleted successfully."
-      redirect_to car
+      redirect_to car_path(car, :anchor => 'tab_gas')
     else
       message 'error', "You do not have permission to delete this record."
       redirect_to cars_url
@@ -62,7 +62,7 @@ class RecordsController < ApplicationController
     else
       @record.update(stat: true)
     end
-    redirect_to @record.car
+    redirect_to car_path(@record.car, :anchor => 'tab_gas')
   end
 
   private
