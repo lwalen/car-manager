@@ -5,11 +5,11 @@ class Service < ActiveRecord::Base
   after_destroy :clean_types
 
   def to_s
-    "#{self.date} #{self.mileage} #{self.service_type} #{self.notes}"
+    "#{self.date} #{self.mileage} #{self.cost} #{self.service_type} #{self.notes}"
   end
 
   def clean_types
-    if self.service_type.services.empty?
+    if !self.service_type.nil? && self.service_type.services.empty?
       self.service_type.destroy
     end
   end

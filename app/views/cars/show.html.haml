@@ -22,4 +22,5 @@
         %br
   .tab-pane#service
     = render 'services/new'
-    = render partial: 'services/list', locals: {services: @services}
+    - unless @services.empty?
+      = render partial: 'services/list', locals: {services: @services}
