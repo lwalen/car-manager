@@ -1,44 +1,35 @@
 GasTracker::Application.routes.draw do
   
 
-  get 'service_types/new'
-
-  get 'service_types/create'
-
-  get 'service_types/destroy'
-
+  root to: 'pages#index'
   get 'pages/index'
 
-	get 'register' => 'users#new'
-
-	controller :sessions do
-		get 'signin' => :new
-		post 'signin' => :create
-		get 'signout' => :destroy
-	end
-
-	resources :users do
-    get 'settings' => :edit
+  controller :users do
+    get 'register', to: :new
+    get 'settings', to: :edit
   end
 
-	resources :cars do
-		member do
-			post 'make_primary'
-      get 'more_records'
-		end
-	end
+  controller :sessions do
+    get 'signin', to: :new
+    post 'signin', to: :create
+    get 'signout', to: :destroy
+  end
 
-	resources :records do
-		member do
+  resources :cars do
+    get 'more_records', on: :member
+  end
+
+  resources :records do
+    member do
       post 'toggle_stats'
       get 'upload'
       post 'add_multiple'
-		end
-	end
+    end
+  end
 
+  resources :users
   resources :services
-
-  root to: 'pages#index'
+  resources :service_types
 
 
   # The priority is based upon order of creation: first created -> highest priority.

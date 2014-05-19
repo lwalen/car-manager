@@ -33,7 +33,7 @@ class UsersController < ApplicationController
       messages = user.errors.to_a.join(' and ').downcase
       message 'danger', "Settings could not be saved because #{messages}."
     end
-    redirect_to user_settings_path(user)
+    redirect_to settings_path
   end
 
   def destroy
