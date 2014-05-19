@@ -17,7 +17,9 @@ GasTracker::Application.routes.draw do
 		get 'signout' => :destroy
 	end
 
-	resources :users
+	resources :users do
+    get 'settings' => :edit
+  end
 
 	resources :cars do
 		member do

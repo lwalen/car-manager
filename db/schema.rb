@@ -61,9 +61,9 @@ ActiveRecord::Schema.define(version: 20140519004159) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "auth_token"
-    t.integer  "number_of_records"
-    t.string   "distance_unit"
-    t.string   "volume_unit"
+    t.integer  "number_of_records", default: 5
+    t.string   "distance_unit",     default: "Miles"
+    t.string   "volume_unit",       default: "Gallons"
   end
 
 end

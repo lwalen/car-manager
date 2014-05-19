@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
 
   def show
-    @user = User.find(params[:id])
-    @car = Car.new
   end
 
   def new
@@ -10,11 +8,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
-    unless current_user.id == @user.id
-      message 'danger', "You do not have permission to edit this user."
-      redirect_to @user
-    end
+    @user = current_user
   end
 
   def create
@@ -31,14 +25,14 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
 
-    if @user.update_attributes(params[:user])
-      message 'success', "User #{@user.username} was successfully updated."
-      redirect_to user_path(@user)
+    if @user.update(user_settings)
+      message 'success', "Settings saved."
     else
-      render action: "edit"
+      message 'danger', "Settings could not be saved. Sorry!"
     end
+    render action: :edit
   end
 
   def destroy
@@ -57,5 +51,9 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:username, :password, :password_confirmation)
+  end
+
+  def user_settings
+    params.require(:user).permit(:number_of_records, :distance_unit, :volume_unit)
   end
 end

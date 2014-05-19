@@ -24,6 +24,7 @@
           %ul.nav.navbar-nav.navbar-right
             - if current_user
               %li= link_to "Cars", cars_url
+              %li= link_to "Settings", user_settings_url(current_user)
               %li= link_to "Sign Out", signout_url
             - else
               %li= link_to "Sign In", signin_url
