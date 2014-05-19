@@ -8,7 +8,7 @@
   %li.active= link_to 'Gas', '#gas', data: { toggle: 'tab' }
   %li= link_to 'Service', '#service', data: { toggle: 'tab' }
   %li.pull-right
-    .mpg= "#{number_with_precision @car.mpg, precision: 2} mpg"
+    .mpg= "#{number_with_precision @car.mpg, precision: 2} #{@mpg}"
 .tab-content
   .tab-pane.active#gas
     = render 'records/new'

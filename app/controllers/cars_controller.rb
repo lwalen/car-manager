@@ -5,12 +5,13 @@ class CarsController < ApplicationController
 
   def show
     @car = Car.find(params[:id])
+    @mpg = "#{current_user.distance_unit[0].downcase}p#{current_user.volume_unit[0].downcase} "
 
     if params[:all]
       @remaining = 0
       @records = @car.records.order('mileage DESC')
     else
-      limit = 10
+      limit = current_user.number_of_records
       @remaining = @car.records.all.count - limit
       @records = @car.records.order('mileage DESC').limit(limit)
     end
