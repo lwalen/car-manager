@@ -36,11 +36,13 @@ class CarsController < ApplicationController
       @car.main = true
     end
 
-    if @car.save
+    if res = @car.save
       message 'success', "Car #{@car.name} was successfully created."
       redirect_to cars_url
     else
-      render action: "new"
+      messages = @car.errors.to_a.join(' and ').downcase
+      message 'danger', "Couldn't create car because #{messages}."
+      redirect_to cars_url
     end
   end
 
@@ -75,24 +77,6 @@ class CarsController < ApplicationController
       message 'danger', "You do not have permission to delete this car."
       redirect_to cars_url
     end
-  end
-
-  def make_primary
-    @car = Car.find(params[:id])
-    @current_primary = current_user.primary_car
-    @current_primary.update(main: false) if !@current_primary.nil?
-    result = @car.update(main: true)
-    if @car = current_user.primary_car
-      message 'success', "Changed primary car to #{@car}."
-      redirect_to cars_url
-    else 
-      message 'danger', "Failed to set car as primary."
-      redirect_to cars_url
-    end
-  end
-
-  def service
-
   end
 
   private

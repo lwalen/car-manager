@@ -19,20 +19,20 @@ class UsersController < ApplicationController
       message 'success', "User #{@user.username} was successfully created."
       redirect_to cars_path
     else
-      message 'danger', "Your account could not be created. Sorry!"
+      messages = @user.errors.to_a.join(' and ').downcase
+      message 'danger', "Your account could not be created because #{messages}."
       redirect_to register_path
     end
   end
 
   def update
-    @user = current_user
-
-    if @user.update(user_settings)
+    if current_user.update(user_settings)
       message 'success', "Settings saved."
+      redirect_to user_settings_path(current_user)
     else
       message 'danger', "Settings could not be saved. Sorry!"
+      render action: :edit
     end
-    render action: :edit
   end
 
   def destroy
@@ -54,6 +54,6 @@ class UsersController < ApplicationController
   end
 
   def user_settings
-    params.require(:user).permit(:number_of_records, :distance_unit, :volume_unit)
+    params.require(:user).permit(:primary_car_id, :number_of_records, :distance_unit, :volume_unit)
   end
 end

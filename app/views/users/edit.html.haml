@@ -1,5 +1,16 @@
 %h1 Settings
+%br
 = form_for @user, html: {class: 'form-horizontal'} do |f|
+
+  .form-group
+    = f.label :primary_car_id, class: 'control-label col-xs-3'
+    .col-xs-9
+      = f.select :primary_car_id,                  |
+      options_for_select(@user.cars.order("name"). |
+      collect{ |c| [c.name, c.id] },               |
+      @user.primary_car.id),                       |
+      {}, { class: 'form-control' }                |
+
   .form-group
     = f.label :number_of_records, class: 'control-label col-xs-3'
     .col-xs-9

@@ -1,7 +1,12 @@
 class Car < ActiveRecord::Base
 
+  validates :name,
+    presence: true, 
+    uniqueness: { scope: :user_id } 
+
   has_many :records
   has_many :services
+  belongs_to :user
 
   def update_mpg
     mpg = []
@@ -17,7 +22,7 @@ class Car < ActiveRecord::Base
   end
 
   def primary?
-    self.main
+    return self.id == self.user.primary_car.id
   end
 
   def to_s
