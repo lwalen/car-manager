@@ -13,14 +13,14 @@
   .tab-pane.active#gas
     = render 'records/new'
     %br
-    #records
-      - unless @records.empty?
-        = render partial: 'records/list', locals: {records: @records, remaining: @remaining}
-        - unless @remaining <= 0
-          %p.text-center
-            = link_to "Show all records (#{@remaining} left)", '?all=true'
-        %br
+    - unless @records.empty?
+      = render partial: 'records/list', locals: {records: @records, remaining: @remaining}
+      - unless @remaining <= 0
+        %p.text-center
+          = link_to "Show all records (#{@remaining} left)", '?all=true'
+      %br
   .tab-pane#service
     = render 'services/new'
+    %br
     - unless @services.empty?
       = render partial: 'services/list', locals: {services: @services}
