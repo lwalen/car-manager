@@ -26,13 +26,14 @@ class UsersController < ApplicationController
   end
 
   def update
-    if current_user.update(user_settings)
+    user = current_user
+    if user.update(user_settings)
       message 'success', "Settings saved."
-      redirect_to user_settings_path(current_user)
     else
-      message 'danger', "Settings could not be saved. Sorry!"
-      render action: :edit
+      messages = user.errors.to_a.join(' and ').downcase
+      message 'danger', "Settings could not be saved because #{messages}."
     end
+    redirect_to user_settings_path(user)
   end
 
   def destroy

@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
 		presence: true, 
 		length: {within: 6..40},
 		on: :create
+	validates :number_of_records,
+		presence: true,
+		numericality: { greater_than_or_equal_to: 0 }
 
 	has_secure_password
 
