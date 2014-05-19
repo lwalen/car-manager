@@ -18,7 +18,7 @@
         = render partial: 'records/list', locals: {records: @records, remaining: @remaining}
         - unless @remaining <= 0
           %p.text-center
-            = link_to "Show all records (#{@remaining} left)", '#'
+            = link_to "Show all records (#{@remaining} left)", '?all=true'
         %br
   .tab-pane#service
     = render 'services/new'
