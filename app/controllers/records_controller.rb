@@ -7,7 +7,7 @@ class RecordsController < ApplicationController
     @record = Record.new(record_params)
     @record.date = @record.date.strftime('%Y-%m-%d')
 
-    if @record.mileage.nil? || @record.gallons.nil?
+    if @record.mileage.nil? || @record.volume.nil?
       # disable mileage stats for record
     end
 
@@ -67,6 +67,6 @@ class RecordsController < ApplicationController
 
   private
   def record_params
-    params.require(:record).permit(:car_id, :date, :mileage, :gallons, :cost)
+    params.require(:record).permit(:car_id, :date, :mileage, :volume, :cost)
   end
 end

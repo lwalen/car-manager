@@ -16,7 +16,7 @@ $(function() {
 
 				var actions = $(this).children('.actions');
 				if (actions.hasClass('hidden-xs')) {
-					$(this).children('.mileage, .gallons, .cost').hide();
+					$(this).children('.mileage, .volume, .cost').hide();
 					$(actions).children('a').css('visibility', 'visible');
 					$(actions).attr('colspan', 3);
 					$(actions).removeClass('hidden-xs');
@@ -24,7 +24,7 @@ $(function() {
 					$(actions).addClass('hidden-xs');
 					$(actions).attr('colspan', 1);
 					$(actions).children('a').css('visibility', 'hidden');
-					$(this).children('.mileage, .gallons, .cost').show();
+					$(this).children('.mileage, .volume, .cost').show();
 				}
 			}
 		}

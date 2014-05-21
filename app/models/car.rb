@@ -13,7 +13,7 @@ class Car < ActiveRecord::Base
     self.records.each_with_index do |rec, index|
       if index != 0 && rec.stat? && self.records[index-1].stat?
         miles = rec.mileage - self.records[index-1].mileage
-        mpg.push(miles / rec.gallons)
+        mpg.push(miles / rec.volume)
       end
     end
 
@@ -31,9 +31,9 @@ class Car < ActiveRecord::Base
 
   def to_csv(options = {})
     CSV.generate(options) do |csv|
-      csv << ['Date', 'Mileage', 'Gallons', 'Cost']
+      csv << ['Date', 'Mileage', self.user.volume_unit, 'Cost']
       records.each do |r|
-        csv << [r.date, r.mileage, r.gallons, r.cost]
+        csv << [r.date, r.mileage, r.volume, r.cost]
       end
     end
   end

@@ -16,6 +16,6 @@ class Record < ActiveRecord::Base
   end
 
   def to_s
-    "#{self.date} #{self.mileage} #{self.gallons} #{self.cost}"
+    "#{self.date} #{self.mileage} #{self.volume} #{self.cost}"
   end
 end
