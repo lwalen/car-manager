@@ -25,7 +25,9 @@
               = link_to "Gas Tracker", cars_url, class: 'navbar-brand', title: "View cars"
           - else
             = link_to "Gas Tracker", root_url, class: 'navbar-brand', title: "Go to main page"
-
+        %ul.nav.navbar-nav.navbar-left.hidden-xs
+          %li
+            %p.navbar-text.nav-hint
 
         .collapse.navbar-collapse#navbar-collapse
           %ul.nav.navbar-nav.navbar-right

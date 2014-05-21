@@ -16,3 +16,15 @@
 //= require_tree .
 //= require selectize
 //= require bootstrap
+
+$(function() {
+	$('.nav-hint').html($('.navbar-brand').attr('title'));
+	$('.navbar-brand').attr('title', '');
+
+	$('.navbar-brand').hover(
+		function() {
+			$('.nav-hint').css('visibility', 'visible')
+		}, function() {
+			$('.nav-hint').css('visibility', 'hidden');
+		});
+});
