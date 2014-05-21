@@ -18,7 +18,14 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          = link_to "Gas Tracker", root_url, class: 'navbar-brand', title: "#{"View primary car" if current_user}"
+          - if current_user
+            - if current_user.primary_car
+              = link_to "Gas Tracker", current_user.primary_car, class: 'navbar-brand', title: "View primary car"
+            - else
+              = link_to "Gas Tracker", cars_url, class: 'navbar-brand', title: "View cars"
+          - else
+            = link_to "Gas Tracker", root_url, class: 'navbar-brand', title: "Go to main page"
+
 
         .collapse.navbar-collapse#navbar-collapse
           %ul.nav.navbar-nav.navbar-right
