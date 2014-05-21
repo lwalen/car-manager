@@ -11,7 +11,7 @@
     - records.each do |rec|
       %tr{class: "#{'no-stat' unless rec.stat?}"}
         %td.date= rec.date.strftime('%b %-d')
-        %td.mileage= number_with_delimiter(rec.mileage, delimiter: ',')
+        %td.mileage= number_with_delimiter(rec.mileage.round, delimiter: ',')
         %td.gallons= number_with_precision(rec.gallons, precision: 2)
         %td.cost= number_to_currency(rec.cost)
 

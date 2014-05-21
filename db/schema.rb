@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140519011710) do
+ActiveRecord::Schema.define(version: 20140521030606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20140519011710) do
   create_table "records", force: true do |t|
     t.integer  "car_id"
     t.date     "date"
-    t.integer  "mileage"
+    t.float    "mileage"
     t.float    "gallons"
     t.float    "cost"
     t.datetime "created_at"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20140519011710) do
   create_table "services", force: true do |t|
     t.integer  "car_id"
     t.date     "date"
-    t.integer  "mileage"
+    t.float    "mileage"
     t.integer  "service_type_id"
     t.text     "notes"
     t.datetime "created_at"
