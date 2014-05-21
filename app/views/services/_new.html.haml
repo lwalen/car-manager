@@ -13,12 +13,12 @@
   .form-group
     = f.label :mileage, class: 'control-label col-xs-3'
     .col-xs-9
-      = f.number_field :mileage, class: 'form-control', autocomplete: 'off'
+      = f.number_field :mileage, class: 'form-control', autocomplete: 'off', novalidate: true
 
   .form-group
     = f.label :cost, class: 'control-label col-xs-3'
     .col-xs-9
-      = f.number_field :cost, class: 'form-control', autocomplete: 'off'
+      = f.number_field :cost, class: 'form-control', autocomplete: 'off', novalidate: true
 
   .form-group
     = f.label :service_type, "Type", class: 'control-label col-xs-3'
