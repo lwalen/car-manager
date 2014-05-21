@@ -12,7 +12,11 @@ class SessionsController < ApplicationController
 				cookies[:auth_token] = user.auth_token
 			end
 			message 'success', "Welcome, #{user}!"
-			redirect_to car_path(user.primary_car)
+			if user.primary_car.nil?
+				redirect_to cars_path
+			else
+				redirect_to user.primary_car
+			end
 		else
 			message 'danger', "Invalid user/password combination."
 			redirect_to root_path

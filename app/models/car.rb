@@ -22,7 +22,7 @@ class Car < ActiveRecord::Base
   end
 
   def primary?
-    return self.id == self.user.primary_car.id
+    self.user.primary_car && self.id == self.user.primary_car.id
   end
 
   def to_s

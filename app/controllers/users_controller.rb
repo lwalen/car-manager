@@ -9,6 +9,13 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
+    @primary_car_options = @user.cars.order("name").collect{ |c| [c.name, c.id] }
+
+    # Add an empty item to the front if the user doesn't have a primary car
+    if @user.primary_car.nil?
+      @primary_car_options.unshift(["", ""])
+    end
+
   end
 
   def create

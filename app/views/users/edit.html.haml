@@ -5,11 +5,7 @@
   .form-group
     = f.label :primary_car_id, class: 'control-label col-xs-6 col-sm-3'
     .col-xs-6
-      = f.select :primary_car_id,                  |
-      options_for_select(@user.cars.order("name"). |
-      collect{ |c| [c.name, c.id] },               |
-      @user.primary_car.id),                       |
-      {}, { class: 'form-control' }                |
+      = f.select :primary_car_id, options_for_select(@primary_car_options, @user.primary_car ? @user.primary_car.id : nil), {}, { class: 'form-control' }
 
   .form-group
     = f.label :number_of_records, class: 'control-label col-xs-6 col-sm-3'
