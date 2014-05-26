@@ -2,9 +2,10 @@
 %header
   %h1
     = @car
-  = link_to "export gas", car_path(format: "csv"), class: "hidden-xs"
-  |
-  = link_to "import gas", import_car_path, class: "hidden-xs"
+  .hidden-xs
+    = link_to "export gas", car_path(format: "csv")
+    |
+    = link_to "import gas", import_car_path
 %br
 %ul.nav.nav-tabs
   %li.active= link_to 'Gas', '#gas', data: { toggle: 'tab' }
