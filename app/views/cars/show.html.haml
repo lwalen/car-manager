@@ -1,12 +1,6 @@
 
 %header
-  %h1
-    = @car
-  .hidden-xs
-    = link_to "export gas", car_path(format: "csv")
-    |
-    = link_to "import gas", import_car_path
-%br
+  %h1= @car
 %ul.nav.nav-tabs
   %li.active= link_to 'Gas', '#gas', data: { toggle: 'tab' }
   %li= link_to 'Service', '#service', data: { toggle: 'tab' }
@@ -15,6 +9,10 @@
     .mpg.hidden-xs= "#{number_with_precision @car.mpg, precision: 2} #{@long_mpg}"
 .tab-content
   .tab-pane.active#gas
+    .hidden-xs
+      .advanced-actions
+        = link_to "export", car_path(format: "csv"), class: "btn btn-link"
+        = link_to "import", '#', class: "button btn btn-link", 'data-toggle' => "modal", 'data-target' => "#importModal"
     = render 'records/new'
     %br
     - unless @records.empty?
@@ -28,3 +26,5 @@
     %br
     - unless @services.empty?
       = render partial: 'services/list', locals: {services: @services}
+
+= render 'import'

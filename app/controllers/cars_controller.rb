@@ -47,7 +47,7 @@ class CarsController < ApplicationController
   end
 
   def edit
-    @car = Car.find_by_slug(params[:id])
+    @car = current_user.cars.find_by_slug(params[:id])
     unless current_user.id == @car.user_id
       message 'error', "You do not have permission to view this page."
       redirect_to current_user
@@ -55,7 +55,7 @@ class CarsController < ApplicationController
   end
 
   def update
-    @car = Car.find_by_slug(params[:id])
+    @car = current_user.cars.find_by_slug(params[:id])
 
     if @car.update_attributes(params[:car])
       message 'success', "Car '#{@car.name}' was successfully updated."
@@ -66,7 +66,7 @@ class CarsController < ApplicationController
   end
 
   def destroy
-    @car = Car.find_by_slug(params[:id])
+    @car = current_user.cars.find_by_slug(params[:id])
     
     if current_user.id == @car.user_id
       name = @car.name
@@ -80,11 +80,11 @@ class CarsController < ApplicationController
   end
 
   def import
-    @car = Car.find_by_slug(params[:id])
+    @car = current_user.cars.find_by_slug(params[:id])
   end
 
   def upload
-    @car = Car.find_by_slug(params[:id])
+    @car = current_user.cars.find_by_slug(params[:id])
 
     require 'csv'
     CSV.foreach(params[:car][:records_csv].path, 
