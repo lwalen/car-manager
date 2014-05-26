@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
     flash[:notice_type] = type
     flash[:notice] = content
   end
+
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
 end

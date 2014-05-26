@@ -4,7 +4,8 @@ class CarsController < ApplicationController
   end
 
   def show
-    @car = Car.find(params[:id])
+    @car = current_user.cars.find_by_name(params[:id]) || not_found
+
     @long_mpg = "#{current_user.distance_unit.downcase} 
                  per #{current_user.volume_unit.downcase.singularize}"
     @mpg = "#{current_user.distance_unit[0].downcase}p#{current_user.volume_unit[0].downcase}"

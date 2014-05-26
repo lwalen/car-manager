@@ -17,6 +17,7 @@ GasTracker::Application.routes.draw do
 
   resources :cars do
     get 'more_records', on: :member
+    #get ':name', to: :show
   end
 
   resources :records do

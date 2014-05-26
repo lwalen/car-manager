@@ -29,6 +29,10 @@ class Car < ActiveRecord::Base
     "#{self.name}"
   end
 
+  def to_param
+    name
+  end
+
   def to_csv(options = {})
     CSV.generate(options) do |csv|
       csv << ['Date', 'Mileage', self.user.volume_unit, 'Cost']
