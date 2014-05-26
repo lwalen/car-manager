@@ -3,15 +3,14 @@
     %h1 Cars
     %br
     - if @cars.empty?
-      You don't have any cars!
-    - else
-      %ul.list-group
-        - @cars.each do |car|
-          %li.list-group-item{class: "#{'list-group-item-info' if car.primary?}"}
-            %h4.car= link_to car, car_path(car)
-            = "(#{car.records.count} record#{'s' if car.records.count != 1})"
-            = link_to '#' do
-              %span.glyphicon.glyphicon-pencil.pull-right
+      %p You don't have any cars!
+    %ul.list-group
+      - @cars.each do |car|
+        %li.list-group-item{class: "#{'list-group-item-info' if car.primary?}"}
+          %h4.car= link_to car, car_path(car)
+          = "(#{car.records.count} record#{'s' if car.records.count != 1})"
+          = link_to '#' do
+            %span.glyphicon.glyphicon-pencil.pull-right
 
-        %li.list-group-item
-          = render 'cars/new'
+      %li.list-group-item
+        = render 'cars/new'

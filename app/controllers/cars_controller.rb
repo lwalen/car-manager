@@ -35,9 +35,6 @@ class CarsController < ApplicationController
   def create
     @car = Car.new(car_params)
     @car.user_id = current_user.id
-    if Car.find_by_user_id(current_user.id).nil?
-      @car.main = true
-    end
 
     if res = @car.save
       message 'success', "Car #{@car.name} was successfully created."

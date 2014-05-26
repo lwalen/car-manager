@@ -1,0 +1,3 @@
+= form_for @car, url: {action: :upload} do |f|
+  = f.file_field :records_csv
+  = f.submit 'Upload'
