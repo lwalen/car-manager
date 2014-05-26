@@ -16,14 +16,16 @@ GasTracker::Application.routes.draw do
   end
 
   resources :cars do
-    get 'more_records', on: :member
-    #get ':name', to: :show
+    member do
+      get 'more_records'
+      get 'import'
+      patch 'upload'
+    end
   end
 
   resources :records do
     member do
       post 'toggle_stats'
-      get 'upload'
       post 'add_multiple'
     end
   end

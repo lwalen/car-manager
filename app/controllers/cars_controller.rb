@@ -50,7 +50,7 @@ class CarsController < ApplicationController
   end
 
   def edit
-    @car = Car.find(params[:id])
+    @car = Car.find_by_slug(params[:id])
     unless current_user.id == @car.user_id
       message 'error', "You do not have permission to view this page."
       redirect_to current_user
@@ -58,7 +58,7 @@ class CarsController < ApplicationController
   end
 
   def update
-    @car = Car.find(params[:id])
+    @car = Car.find_by_slug(params[:id])
 
     if @car.update_attributes(params[:car])
       message 'success', "Car '#{@car.name}' was successfully updated."
@@ -69,7 +69,7 @@ class CarsController < ApplicationController
   end
 
   def destroy
-    @car = Car.find(params[:id])
+    @car = Car.find_by_slug(params[:id])
     
     if current_user.id == @car.user_id
       name = @car.name
@@ -79,6 +79,32 @@ class CarsController < ApplicationController
     else
       message 'danger', "You do not have permission to delete this car."
       redirect_to cars_url
+    end
+  end
+
+  def import
+    @car = Car.find_by_slug(params[:id])
+  end
+
+  def upload
+    @car = Car.find_by_slug(params[:id])
+
+    require 'csv'
+    CSV.foreach(params[:car][:records_csv].path, 
+                headers: true, 
+                header_converters: lambda { |h| h.try(:downcase) }) do |row|
+      unless row.empty?
+        rec = Record.create(row.to_hash.merge({car_id: @car.id}))
+        puts rec.inspect
+      end
+    end
+
+    if true
+      message 'success', "Records for #{@car.name} were successfully imported."
+      redirect_to car_path(@car)
+    else
+      message 'danger', "Records for #{@car.name} could not be imported."
+      render action: "import"
     end
   end
 
