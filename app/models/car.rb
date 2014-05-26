@@ -8,6 +8,8 @@ class Car < ActiveRecord::Base
   has_many :services
   belongs_to :user
 
+  after_save :update_slug
+
   def update_mpg
     mpg = []
     self.records.each_with_index do |rec, index|
@@ -21,6 +23,13 @@ class Car < ActiveRecord::Base
     self.save
   end
 
+  def update_slug
+    new_slug = self.name.gsub(' ', '-').downcase
+    unless self.slug == new_slug
+      self.update(slug: new_slug)
+    end
+  end
+
   def primary?
     self.user.primary_car && self.id == self.user.primary_car.id
   end
@@ -30,7 +39,7 @@ class Car < ActiveRecord::Base
   end
 
   def to_param
-    name
+    slug
   end
 
   def to_csv(options = {})
