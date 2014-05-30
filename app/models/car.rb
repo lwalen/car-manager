@@ -24,7 +24,7 @@ class Car < ActiveRecord::Base
   end
 
   def update_slug
-    new_slug = self.name.gsub(' ', '-').downcase
+    new_slug = self.name.parameterize
     unless self.slug == new_slug
       self.update(slug: new_slug)
     end
