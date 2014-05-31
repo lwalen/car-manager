@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140531230859) do
+ActiveRecord::Schema.define(version: 20140531234803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,10 +53,11 @@ ActiveRecord::Schema.define(version: 20140531230859) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "auth_token"
-    t.integer  "number_of_records", default: 5
-    t.string   "distance_unit",     default: "Miles"
-    t.string   "volume_unit",       default: "Gallons"
+    t.integer  "number_of_gas_records",     default: 5
+    t.string   "distance_unit",             default: "Miles"
+    t.string   "volume_unit",               default: "Gallons"
     t.integer  "primary_car_id"
+    t.integer  "number_of_service_records", default: 5
   end
 
 end
