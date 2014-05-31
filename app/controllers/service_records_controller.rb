@@ -9,7 +9,7 @@ class ServicesController < ApplicationController
     p[:service_type] = ServiceType.find_by_name(p[:service_type]) ||
       ServiceType.create(name: p[:service_type], user: current_user)
 
-    @service = Service.new(p)
+    @service = ServiceRecord.new(p)
     @service.date = @service.date.strftime('%Y-%m-%d')
 
     if @service.save
@@ -22,7 +22,7 @@ class ServicesController < ApplicationController
   end
 
   def destroy
-    @service = Service.find(params[:id])
+    @service = ServiceRecord.find(params[:id])
     car = @service.car
     if current_user.id == car.user_id
       @service.destroy

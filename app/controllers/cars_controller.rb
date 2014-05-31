@@ -12,11 +12,11 @@ class CarsController < ApplicationController
 
     if params[:all]
       @remaining = 0
-      @records = @car.records.order('mileage DESC')
+      @gas_records = @car.gas_records.order('mileage DESC')
     else
-      limit = current_user.number_of_records
-      @remaining = @car.records.all.count - limit
-      @records = @car.records.order('mileage DESC').limit(limit)
+      limit = current_user.number_of_gas_records
+      @remaining = @car.gas_records.all.count - limit
+      @gas_records = @car.gas_records.order('mileage DESC').limit(limit)
     end
     @services = @car.services.order('mileage DESC')
 
@@ -87,7 +87,7 @@ class CarsController < ApplicationController
     @car = current_user.cars.find_by_slug(params[:id])
 
     require 'csv'
-    CSV.foreach(params[:car][:records_csv].path, 
+    CSV.foreach(params[:car][:gas_records_csv].path, 
                 headers: true, 
                 header_converters: lambda { |h| h.try(:downcase) }) do |row|
       unless row.empty?
@@ -97,10 +97,10 @@ class CarsController < ApplicationController
     end
 
     if true
-      message 'success', "Records for #{@car.name} were successfully imported."
+      message 'success', "gas_records for #{@car.name} were successfully imported."
       redirect_to car_path(@car)
     else
-      message 'danger', "Records for #{@car.name} could not be imported."
+      message 'danger', "gas_records for #{@car.name} could not be imported."
       render action: "import"
     end
   end

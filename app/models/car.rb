@@ -4,8 +4,8 @@ class Car < ActiveRecord::Base
     presence: true, 
     uniqueness: { scope: :user_id } 
 
-  has_many :records
-  has_many :services
+  has_many :gas_records
+  has_many :service_records
   belongs_to :user
 
   after_save :update_slug
