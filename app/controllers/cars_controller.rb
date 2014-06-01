@@ -18,7 +18,7 @@ class CarsController < ApplicationController
       @remaining = @car.gas_records.all.count - limit
       @gas_records = @car.gas_records.order('mileage DESC').limit(limit)
     end
-    @services = @car.services.order('mileage DESC')
+    @service_records = @car.service_records.order('mileage DESC')
 
     filename = "#{@car.name.tr(' ', '_')}.csv"
 

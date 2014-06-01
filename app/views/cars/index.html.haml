@@ -8,7 +8,8 @@
       - @cars.each do |car|
         %li.list-group-item{class: "#{'list-group-item-info' if car.primary?}"}
           %h4.car= link_to car, car_path(car)
-          = "(#{car.records.count} record#{'s' if car.records.count != 1})"
+          = "(#{car.gas_records.count} gas, "
+          = "#{car.service_records.count} service)"
           = link_to '#' do
             %span.glyphicon.glyphicon-pencil.pull-right
 

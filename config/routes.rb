@@ -23,7 +23,7 @@ GasTracker::Application.routes.draw do
     end
   end
 
-  resources :records do
+  resources :gas_records do
     member do
       post 'toggle_stats'
       post 'add_multiple'
@@ -31,7 +31,7 @@ GasTracker::Application.routes.draw do
   end
 
   resources :users
-  resources :services
+  resources :service_records
   resources :service_types
 
 

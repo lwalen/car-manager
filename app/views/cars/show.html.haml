@@ -1,6 +1,11 @@
 
 %header
-  %h1= @car
+  %h1{style: 'display: inline'}= @car
+  .advanced-actions{style: 'display: inline'}
+    = link_to "export", car_path(format: "csv"), class: "btn btn-link"
+    = link_to "import", '#', class: "button btn btn-link", 'data-toggle' => "modal", 'data-target' => "#importModal"
+  %br
+  %br
 %ul.nav.nav-tabs
   %li.active= link_to 'Gas', '#gas', data: { toggle: 'tab' }
   %li= link_to 'Service', '#service', data: { toggle: 'tab' }
@@ -9,14 +14,10 @@
     .mpg.hidden-xs= "#{number_with_precision @car.mpg, precision: 2} #{@long_mpg}"
 .tab-content
   .tab-pane.active#gas
-    .hidden-xs
-      .advanced-actions
-        = link_to "export", car_path(format: "csv"), class: "btn btn-link"
-        = link_to "import", '#', class: "button btn btn-link", 'data-toggle' => "modal", 'data-target' => "#importModal"
     = render 'records/new'
     %br
-    - unless @records.empty?
-      = render partial: 'records/list', locals: {records: @records, remaining: @remaining}
+    - unless @gas_records.empty?
+      = render partial: 'records/list', locals: {records: @gas_records, remaining: @remaining}
     - unless @remaining <= 0
       %p.text-center
         = link_to "Show all records (#{@remaining} left)", '?all=true'
@@ -24,7 +25,7 @@
   .tab-pane#service
     = render 'services/new'
     %br
-    - unless @services.empty?
-      = render partial: 'services/list', locals: {services: @services}
+    - unless @service_records.empty?
+      = render partial: 'services/list', locals: {services: @service_records}
 
 = render 'import'

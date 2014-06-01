@@ -1,5 +1,7 @@
 class ServiceRecord < Record
 
+  belongs_to :service_type
+  
   after_destroy :clean_types
 
   def to_s
@@ -7,7 +9,7 @@ class ServiceRecord < Record
   end
 
   def clean_types
-    if !self.service_type.nil? && self.service_type.services.empty?
+    if !self.service_type.nil? && self.service_type.service_records.empty?
       self.service_type.destroy
     end
   end

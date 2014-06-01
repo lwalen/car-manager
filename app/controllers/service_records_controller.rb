@@ -1,4 +1,4 @@
-class ServicesController < ApplicationController
+class ServiceRecordsController < ApplicationController
   
   def new
   end
@@ -13,7 +13,7 @@ class ServicesController < ApplicationController
     @service.date = @service.date.strftime('%Y-%m-%d')
 
     if @service.save
-      @services = @service.car.services
+      @services = @service.car.service_records
       message 'success', "Service successfully created."
       redirect_to car_path(@service.car, :anchor => 'tab_service')
     else
@@ -36,6 +36,6 @@ class ServicesController < ApplicationController
 
   private
   def service_params
-    params.require(:service).permit(:car_id, :date, :mileage, :cost, :service_type, :notes)
+    params.require(:service_record).permit(:car_id, :date, :mileage, :cost, :service_type, :notes)
   end
 end

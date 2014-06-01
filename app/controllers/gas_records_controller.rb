@@ -1,10 +1,10 @@
-class RecordsController < ApplicationController
+class GasRecordsController < ApplicationController
 
   def new
   end
 
   def create
-    @record = Record.new(record_params)
+    @record = GasRecord.new(record_params)
     @record.date = @record.date.strftime('%Y-%m-%d')
 
     if @record.mileage.nil? || @record.volume.nil?
@@ -20,7 +20,7 @@ class RecordsController < ApplicationController
     end
 
     if @record.save
-      @records = @record.car.records
+      @records = @record.car.gas_records
       message 'success', "Record successfully created."
       redirect_to car_path(@record.car, :anchor => 'tab_gas')
     else
@@ -29,7 +29,7 @@ class RecordsController < ApplicationController
   end
 
   def destroy
-    @record = Record.find(params[:id])
+    @record = GasRecord.find(params[:id])
     car = @record.car
     if current_user.id == car.user_id
       @record.destroy
@@ -56,7 +56,7 @@ class RecordsController < ApplicationController
   end
 
   def toggle_stats
-    @record = Record.find(params[:id])
+    @record = GasRecord.find(params[:id])
     if @record.stat?
       @record.update(stat: false)
     else
@@ -67,6 +67,6 @@ class RecordsController < ApplicationController
 
   private
   def record_params
-    params.require(:record).permit(:car_id, :date, :mileage, :volume, :cost)
+    params.require(:gas_record).permit(:car_id, :date, :mileage, :volume, :cost)
   end
 end
