@@ -87,7 +87,7 @@ class CarsController < ApplicationController
     @car = current_user.cars.find_by_slug(params[:id])
 
     require 'csv'
-    CSV.foreach(params[:car][:gas_records_csv].path, 
+    CSV.foreach(params[:car][:records_csv].path,
                 headers: true, 
                 header_converters: lambda { |h| h.try(:downcase) }) do |row|
       unless row.empty?
