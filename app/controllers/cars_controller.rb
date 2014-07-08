@@ -91,7 +91,7 @@ class CarsController < ApplicationController
                 headers: true, 
                 header_converters: lambda { |h| h.try(:downcase) }) do |row|
       unless row.empty?
-        rec = Record.create(row.to_hash.merge({car_id: @car.id}))
+        rec = GasRecord.create(row.to_hash.merge({car_id: @car.id}))
         puts rec.inspect
       end
     end
