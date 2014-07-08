@@ -18,7 +18,9 @@
   .form-group
     = f.label :cost, class: 'control-label col-xs-3'
     .col-xs-9
-      = f.number_field :cost, class: 'form-control', autocomplete: 'off', novalidate: true
+      .input-group
+        %span.input-group-addon $
+        = f.number_field :cost, class: 'form-control', autocomplete: 'off', novalidate: true
 
   .form-group
     = f.label :service_type, "Type", class: 'control-label col-xs-3'
