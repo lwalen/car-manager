@@ -1,7 +1,7 @@
 
 %header
   %h1{style: 'display: inline'}= @car
-  .advanced-actions{style: 'display: inline'}
+  .advanced-actions.hidden-xs{style: 'display: inline'}
     = link_to "export", car_path(format: "csv"), class: "btn btn-link"
     = link_to "import", '#', class: "button btn btn-link", 'data-toggle' => "modal", 'data-target' => "#importModal"
   %br
@@ -14,18 +14,18 @@
     .mpg.hidden-xs= "#{number_with_precision @car.mpg, precision: 2} #{@long_mpg}"
 .tab-content
   .tab-pane.active#gas
-    = render 'records/new'
+    = render 'gas_records/new'
     %br
     - unless @gas_records.empty?
-      = render partial: 'records/list', locals: {records: @gas_records, remaining: @remaining}
+      = render partial: 'gas_records/list', locals: {records: @gas_records, remaining: @remaining}
     - unless @remaining <= 0
       %p.text-center
         = link_to "Show all records (#{@remaining} left)", '?all=true'
     %br
   .tab-pane#service
-    = render 'services/new'
+    = render 'service_records/new'
     %br
     - unless @service_records.empty?
-      = render partial: 'services/list', locals: {services: @service_records}
+      = render partial: 'service_records/list', locals: {services: @service_records}
 
 = render 'import'
