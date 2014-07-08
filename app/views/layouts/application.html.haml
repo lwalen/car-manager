@@ -1,7 +1,7 @@
 !!! 5
 %html
   %head
-    %title Gas Tracker
+    %title Car Manager
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
@@ -20,11 +20,11 @@
             %span.icon-bar
           - if current_user
             - if current_user.primary_car
-              = link_to "Gas Tracker", current_user.primary_car, class: 'navbar-brand', title: "View primary car"
+              = link_to "Car Manager", current_user.primary_car, class: 'navbar-brand', title: "View primary car"
             - else
-              = link_to "Gas Tracker", cars_url, class: 'navbar-brand', title: "View cars"
+              = link_to "Car Manager", cars_url, class: 'navbar-brand', title: "View cars"
           - else
-            = link_to "Gas Tracker", root_url, class: 'navbar-brand', title: "Go to main page"
+            = link_to "Car Manager", root_url, class: 'navbar-brand', title: "Go to main page"
         %ul.nav.navbar-nav.navbar-left.hidden-xs
           %li
             %p.navbar-text.nav-hint

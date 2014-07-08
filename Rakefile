@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-GasTracker::Application.load_tasks
+CarManager::Application.load_tasks
