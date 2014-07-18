@@ -62,6 +62,6 @@ class UsersController < ApplicationController
   end
 
   def user_settings
-    params.require(:user).permit(:primary_car_id, :number_of_records, :distance_unit, :volume_unit)
+    params.require(:user).permit(:primary_car_id, :number_of_gas_records, :number_of_service_records, :distance_unit, :volume_unit)
   end
 end

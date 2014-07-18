@@ -13,7 +13,9 @@
   .form-group
     = f.label :mileage, class: 'control-label col-xs-3'
     .col-xs-9
-      = f.number_field :mileage, class: 'form-control', autocomplete: 'off'
+      .input-group
+        = f.number_field :mileage, class: 'form-control', autocomplete: 'off'
+        %span.input-group-addon= current_user.distance_unit.downcase
 
   .form-group
     = f.label :cost, class: 'control-label col-xs-3'
@@ -25,7 +27,9 @@
   .form-group
     = f.label :volume, current_user.volume_unit, class: 'control-label col-xs-3'
     .col-xs-9
-      = f.number_field :volume, class: 'form-control', autocomplete: 'off'
+      .input-group
+        = f.number_field :volume, class: 'form-control', autocomplete: 'off'
+        %span.input-group-addon= current_user.volume_unit.downcase
 
   .text-right
     = f.submit 'add', class: 'btn btn-primary btn-lg'

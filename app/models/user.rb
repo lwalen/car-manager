@@ -6,9 +6,12 @@ class User < ActiveRecord::Base
 		length: {within: 4..32}
 	validates :password, 
 		presence: true, 
-		length: {within: 6..40},
+		length: {within: 6..128},
 		on: :create
-	validates :number_of_records,
+	validates :number_of_gas_records,
+		presence: true,
+		numericality: { greater_than_or_equal_to: 0 }
+	validates :number_of_service_records,
 		presence: true,
 		numericality: { greater_than_or_equal_to: 0 }
 
