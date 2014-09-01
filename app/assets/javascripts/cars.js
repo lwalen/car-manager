@@ -24,4 +24,9 @@ $(function() {
 	$('.nav-tabs a').on('shown.bs.tab', function (e) {
 		window.location.hash = e.target.hash.replace("#", "#" + prefix);
 	});
+
+	$('.show-all-records').click(function(event) {
+		$('.gas-tbody').load('/cars/mazda-b2300/more_records');
+		event.preventDefault();
+	});
 });

@@ -11,16 +11,7 @@ class Car < ActiveRecord::Base
   after_save :update_slug
 
   def update_mpg
-    mpg = []
-    self.gas_records.each_with_index do |rec, index|
-      if index != 0 && rec.stat? && self.gas_records[index-1].stat?
-        miles = rec.mileage - self.gas_records[index-1].mileage
-        mpg.push(miles / rec.volume)
-      end
-    end
 
-    self.mpg = mpg.inject{ |sum, el| sum + el }.to_f / mpg.size
-    self.save
   end
 
   def update_slug
