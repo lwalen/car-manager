@@ -107,7 +107,7 @@ class CarsController < ApplicationController
 
   def more_records
     @records = Car.find_by_slug(params[:id]).gas_records.order('mileage DESC').all
-    render partial: 'gas_records', locals: {records: @records}
+    render @records
   end
 
   private
