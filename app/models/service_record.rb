@@ -1,6 +1,6 @@
 class ServiceRecord < Record
 
-  belongs_to :service_type
+  has_and_belongs_to_many :service_types
   
   after_destroy :clean_types
 

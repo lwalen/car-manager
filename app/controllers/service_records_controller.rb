@@ -5,9 +5,13 @@ class ServiceRecordsController < ApplicationController
 
   def create
     p = service_params
-    service_type = p[:service_type]
-    p[:service_type] = ServiceType.find_by_name(p[:service_type]) ||
-      ServiceType.create(name: p[:service_type], user: current_user)
+
+    p[:service_types].reject!(&:blank?)
+    
+    p[:service_types].map! do |service_type|
+      ServiceType.where(name: service_type, user: current_user).first ||
+      ServiceType.create(name: service_type, user: current_user)
+    end
 
     @service = ServiceRecord.new(p)
     @service.date = @service.date.strftime('%Y-%m-%d')
@@ -36,6 +40,6 @@ class ServiceRecordsController < ApplicationController
 
   private
   def service_params
-    params.require(:service_record).permit(:car_id, :date, :mileage, :cost, :service_type, :notes)
+    params.require(:service_record).permit!
   end
 end

@@ -13,7 +13,7 @@
         %td= ser.date.strftime('%b %-d')
         %td= number_with_delimiter(ser.mileage.round, delimiter: ',')
         %td= number_to_currency(ser.cost)
-        %td= ser.service_type
+        %td= ser.service_types.map(&:name).join(', ')
         %td= ser.notes
 
         %td.hidden-xs.text-right

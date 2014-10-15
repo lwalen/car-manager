@@ -20,6 +20,8 @@ class CarsController < ApplicationController
     end
     @service_records = @car.service_records.order('mileage DESC')
 
+    @service_types = current_user.service_types
+
     filename = "#{@car.name.tr(' ', '_')}.csv"
 
     respond_to do |format|

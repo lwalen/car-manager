@@ -23,9 +23,9 @@
         = f.number_field :cost, class: 'form-control', autocomplete: 'off', novalidate: true
 
   .form-group
-    = f.label :service_type, "Type", class: 'control-label col-xs-3'
+    = f.label :service_types, "Type", class: 'control-label col-xs-3'
     .col-xs-9
-      = f.select :service_type, options_for_select(["", ""] + current_user.service_types)
+      = f.select :service_types, options_for_select(@service_types), {}, multiple: true
 
   .form-group
     = f.label :notes, class: 'control-label col-xs-3'
