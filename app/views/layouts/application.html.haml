@@ -3,43 +3,15 @@
   %head
     %title Car Manager
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
-    = javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
 
     %meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1')/
 
-    = render 'pages/favicons'
+    = render 'shared/favicons'
   %body
-    %nav.navbar.navbar-default(role='navigation')
-      .container
-        .navbar-header
-          %button.navbar-toggle(type='button' data-toggle='collapse' data-target='#navbar-collapse')
-            %span.sr-only Toggle navigation
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          - if current_user
-            - if current_user.primary_car
-              = link_to "Car Manager", current_user.primary_car, class: 'navbar-brand', title: "View primary car"
-            - else
-              = link_to "Car Manager", cars_url, class: 'navbar-brand', title: "View cars"
-          - else
-            = link_to "Car Manager", root_url, class: 'navbar-brand', title: "Go to main page"
-        %ul.nav.navbar-nav.navbar-left.hidden-xs
-          %li
-            %p.navbar-text.nav-hint
-
-        .collapse.navbar-collapse#navbar-collapse
-          %ul.nav.navbar-nav.navbar-right
-            - if current_user
-              %li= link_to "Cars", cars_url
-              %li= link_to "Settings", settings_url
-              %li= link_to "Sign Out", signout_url
-            - else
-              %li= link_to "Sign In", signin_url
-              %li= link_to "Register", register_url
-
+    = render 'shared/navigation'
+    
     .container
       - if flash[:notice]
         .alert.center-block{class: "alert-#{flash[:notice_type]}"}= notice

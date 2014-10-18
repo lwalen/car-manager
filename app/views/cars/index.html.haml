@@ -5,13 +5,7 @@
     - if @cars.empty?
       %p You don't have any cars!
     %ul.list-group
-      - @cars.each do |car|
-        %li.list-group-item{class: "#{'list-group-item-info' if car.primary?}"}
-          %h4.car= link_to car, car_path(car)
-          = "(#{car.gas_records.count} gas, "
-          = "#{car.service_records.count} service)"
-          = link_to '#' do
-            %span.glyphicon.glyphicon-pencil.pull-right
+      = render @cars
 
       %li.list-group-item
         = render 'cars/new'

@@ -57,11 +57,11 @@ class CarsController < ApplicationController
   def update
     @car = current_user.cars.find_by_slug(params[:id])
 
-    if @car.update_attributes(params[:car])
+    if @car.update_attributes(car_params)
       message 'success', "Car '#{@car.name}' was successfully updated."
-      redirect_to user_path(@car.user_id)
+      render json: "Car '#{@car.name}' was successfully updated."
     else
-      render action: "edit"
+      render json: "Car could not be saved."
     end
   end
 

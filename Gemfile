@@ -3,16 +3,21 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
 
+# PostgreSQL database
 gem 'pg'
 
 gem 'rails_12factor', group: :production
 
+# App configuration
 gem 'figaro'
 
+# Use haml for view templating
 gem "haml-rails"
 
+# Use bootstrap for responsive layout
 gem 'bootstrap-sass'
 
+# Selectize.js for nice select boxes
 gem 'selectize-rails'
 
 # Use SCSS for stylesheets
@@ -33,9 +38,17 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# Vanilla JavaScript? No way!
+gem 'jquery-rails'
+
 group :development do
+  # Fancy error page
   gem 'better_errors'
+
+  # REPL in better_errors
   gem 'binding_of_caller'
+
+  # Show partials in page
   gem 'xray-rails'
 end
 
