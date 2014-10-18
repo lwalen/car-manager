@@ -22,7 +22,7 @@ class CarsController < ApplicationController
 
     @service_types = current_user.service_types
 
-    filename = "#{@car.name.tr(' ', '_')}.csv"
+    filename = "#{@car.name.tr(' ', '_')}_#{Date.today.strftime("%Y%m%d")}.csv"
 
     respond_to do |format|
       format.html
