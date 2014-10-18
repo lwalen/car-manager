@@ -10,8 +10,10 @@
   %li.active= link_to 'Gas', '#gas', data: { toggle: 'tab' }
   %li= link_to 'Service', '#service', data: { toggle: 'tab' }
   %li.pull-right
-    .mpg.visible-xs= "#{number_with_precision @car.mpg, precision: 2} #{@mpg}"
-    .mpg.hidden-xs= "#{number_with_precision @car.mpg, precision: 2} #{@long_mpg}"
+    .mpg
+      = number_with_precision(@car.mpg, precision: 2)
+      %span.visible-xs= mpg_label(true)
+      %span.hidden-xs= mpg_label
 .tab-content
 
   .tab-pane.active#gas

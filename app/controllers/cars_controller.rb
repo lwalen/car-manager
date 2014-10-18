@@ -6,27 +6,25 @@ class CarsController < ApplicationController
   def show
     @car = current_user.cars.find_by_slug(params[:id]) || not_found
 
-    @long_mpg = "#{current_user.distance_unit.downcase} 
-                 per #{current_user.volume_unit.downcase.singularize}"
-    @mpg = "#{current_user.distance_unit[0].downcase}p#{current_user.volume_unit[0].downcase}"
-
-    if params[:all]
-      @remaining = 0
-      @gas_records = @car.gas_records.order('mileage DESC')
-    else
-      limit = current_user.number_of_gas_records
-      @remaining = @car.gas_records.all.count - limit
-      @gas_records = @car.gas_records.order('mileage DESC').limit(limit)
-    end
-    @service_records = @car.service_records.order('mileage DESC')
-
-    @service_types = current_user.service_types
-
-    filename = "#{@car.name.tr(' ', '_')}_#{Date.today.strftime("%Y%m%d")}.csv"
-
     respond_to do |format|
-      format.html
-      format.csv { send_data @car.to_csv, filename: filename }
+      format.html do
+        if params[:all]
+          @remaining = 0
+          @gas_records = @car.gas_records.order('mileage DESC')
+        else
+          limit = current_user.number_of_gas_records
+          @remaining = @car.gas_records.all.count - limit
+          @gas_records = @car.gas_records.order('mileage DESC').limit(limit)
+        end
+
+        @service_records = @car.service_records.order('mileage DESC')
+        @service_types = current_user.service_types
+      end
+
+      format.csv do
+        filename = "#{@car.name.tr(' ', '_')}_#{Date.today.strftime("%Y%m%d")}.csv"
+        send_data @car.to_csv, filename: filename
+      end
     end
   end
 

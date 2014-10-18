@@ -35,7 +35,7 @@ class Car < ActiveRecord::Base
 
   def to_csv(options = {})
     CSV.generate(options) do |csv|
-      csv << ['Date', 'Mileage', self.user.volume_unit, 'Cost']
+      csv << ['Date', user.distance_unit, user.volume_unit, 'Cost']
       gas_records.order(:mileage).each do |r|
         csv << [r.date, r.mileage, r.volume, r.cost]
       end
