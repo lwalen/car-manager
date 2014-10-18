@@ -1,0 +1,15 @@
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "selectize";
+@import "selectize.bootstrap3";
+@import "*";
+
+.nav-hint {
+	visibility: hidden;
+}
+
+.glyphicon-none:before {
+    content: "\2122";
+    color: transparent !important;
+}
