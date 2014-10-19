@@ -21,6 +21,7 @@ CarManager::Application.routes.draw do
       get 'import'
       patch 'upload'
     end
+    resources :service_records
   end
 
   resources :gas_records do
@@ -30,7 +31,6 @@ CarManager::Application.routes.draw do
   end
 
   resources :users
-  resources :service_records
   resources :service_types
 
 
