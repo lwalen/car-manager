@@ -1,5 +1,5 @@
 %li.list-group-item{class: "#{'list-group-item-info' if car.primary?}"}
-  = form_for car, remote: true do |f|
+  = form_for car do |f|
     %span.car-name-and-info
       %h4.car-name= link_to car, car_path(car)
       %span.car-info

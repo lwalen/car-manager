@@ -59,9 +59,9 @@ class CarsController < ApplicationController
 
     if @car.update_attributes(car_params)
       message 'success', "Car '#{@car.name}' was successfully updated."
-      render json: "Car '#{@car.name}' was successfully updated."
+      redirect_to cars_url
     else
-      render json: "Car could not be saved."
+      redirect_to cars_url
     end
   end
 

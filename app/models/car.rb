@@ -16,9 +16,7 @@ class Car < ActiveRecord::Base
 
   def update_slug
     new_slug = self.name.parameterize
-    unless self.slug == new_slug
-      self.update(slug: new_slug)
-    end
+    self.update(slug: new_slug)
   end
 
   def primary?

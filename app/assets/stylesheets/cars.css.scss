@@ -20,6 +20,10 @@ h4.car-name {
 	margin-top: 10px;
 }
 
-.save-car, .delete-car, #car_name {
+.save-car, .delete-car {
+	display: none;
+}
+
+.car-name-and-info #car_name {
 	display: none;
 }
