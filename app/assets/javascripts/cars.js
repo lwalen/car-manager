@@ -6,7 +6,7 @@ function today() {
 	var year  = d.getFullYear();
 	var month = months[d.getMonth()];
 	var date  = d.getDate();
-	var today = month + ' ' + date.toString() + ', ' + year.toString();
+	return month + ' ' + date.toString() + ', ' + year.toString();
 }
 
 $(function() {
