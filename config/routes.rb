@@ -21,14 +21,16 @@ CarManager::Application.routes.draw do
       get 'import'
       patch 'upload'
     end
+
+    resources :gas_records do
+      member do
+        post 'toggle_stats'
+      end
+    end
+  
     resources :service_records
   end
 
-  resources :gas_records do
-    member do
-      post 'toggle_stats'
-    end
-  end
 
   resources :users
   resources :service_types

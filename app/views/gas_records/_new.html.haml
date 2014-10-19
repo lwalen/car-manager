@@ -1,5 +1,5 @@
 %h3 Add Gas
-= form_for GasRecord.new, html: {class: 'form-horizontal', novalidate: true} do |f|
+= form_for [@car, GasRecord.new], html: {class: 'form-horizontal', novalidate: true} do |f|
   = f.hidden_field :car_id, value: @car.id
 
   .form-group
