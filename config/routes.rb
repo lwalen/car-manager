@@ -26,7 +26,6 @@ CarManager::Application.routes.draw do
   resources :gas_records do
     member do
       post 'toggle_stats'
-      post 'add_multiple'
     end
   end
 

@@ -4,15 +4,15 @@ class GasRecord < Record
   after_destroy :update_mpg
 
   def update_mpg
-    self.car.update_mpg
+    car.update_mpg
   end
 
   def stat?
-    self.stat
+    stat
   end
 
   def to_s
-    "#{self.date} #{self.mileage} #{self.volume} #{self.cost}"
+    "#{date} #{distance} #{volume} #{cost}"
   end
 
 end

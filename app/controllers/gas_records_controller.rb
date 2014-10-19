@@ -41,20 +41,6 @@ class GasRecordsController < ApplicationController
     end
   end
 
-  def upload
-    @records = []
-  end
-
-  def add_multiple
-      #message 'success', params[:new_records][:content]
-      message 'success', "Added X records to CAR"
-      redirect_to cars_url
-  end
-
-  def stat?
-    @record.stat == 't'
-  end
-
   def toggle_stats
     @record = GasRecord.find(params[:id])
     if @record.stat?
