@@ -3,14 +3,11 @@ CarManager::Application.routes.draw do
   root to: 'pages#index'
   get 'pages/index'
 
-  resources :users do
-    member do
-      get 'register', to: :new
-      get 'settings', to: :edit
-    end
-  end
+  resources :users, only: [:new, :create, :edit, :update, :destroy]
+  get 'register', to: 'users#new', as: :register
+  get 'settings', to: 'users#edit', as: :settings
 
-  controller :sessions do
+  controller :sessions, only: [:new, :create, :destroy] do
     get 'signin', to: :new
     post 'signin', to: :create
     get 'signout', to: :destroy
@@ -23,15 +20,12 @@ CarManager::Application.routes.draw do
       patch 'upload'
     end
 
-    resources :gas_records do
+    resources :gas_records, only: [:new, :create, :destroy] do
       member do
         post 'toggle_stats'
       end
     end
 
-    resources :service_records
+    resources :service_records, only: [:new, :create, :destroy]
   end
-
-  resources :service_types
-
 end
