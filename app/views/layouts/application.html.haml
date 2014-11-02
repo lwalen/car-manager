@@ -16,3 +16,10 @@
       - if flash[:notice]
         .alert.center-block{class: "alert-#{flash[:notice_type]}"}= notice
       = yield
+
+    / hacky, but does what I want
+    - if %w(/ /register).include?(request.env['PATH_INFO'])
+      .footer
+        %p.text-muted
+          Made by #{link_to 'Lars', 'http://walen.me'}.
+          Source available on #{link_to 'GitHub', 'https://github.com/lwalen/car-manager'}.
