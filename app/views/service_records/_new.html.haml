@@ -1,5 +1,5 @@
 %h3 Add Service
-= form_for [@car, ServiceRecord.new], html: {class: 'form-horizontal'} do |f|
+= form_for [@car, ServiceRecord.new], html: {class: 'form-horizontal', novalidate: true} do |f|
   = f.hidden_field :car_id, value: @car.id
 
   .form-group
@@ -13,14 +13,13 @@
   .form-group
     = f.label :mileage, class: 'control-label col-xs-3'
     .col-xs-9
-      = f.number_field :mileage, class: 'form-control', autocomplete: 'off', novalidate: true
-
+      = f.number_field :mileage, class: 'form-control', autocomplete: 'off'
   .form-group
     = f.label :cost, class: 'control-label col-xs-3'
     .col-xs-9
       .input-group
         %span.input-group-addon $
-        = f.number_field :cost, class: 'form-control', autocomplete: 'off', novalidate: true
+        = f.number_field :cost, class: 'form-control', autocomplete: 'off'
 
   .form-group
     = f.label :service_types, "Type", class: 'control-label col-xs-3'
