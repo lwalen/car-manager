@@ -11,7 +11,35 @@ class Car < ActiveRecord::Base
   after_save :update_slug
 
   def update_mpg
+  end
 
+  def mpg_adjusted
+    values = []
+    gas_records.order('mileage ASC').each_cons(2) do |a, b|
+      # puts "#{b.mileage} - #{a.mileage} = #{c = b.mileage - a.mileage}\t#{b.volume}\t#{b.volume ? c / b.volume : nil}"
+      if b.volume
+        values << ((b.mileage - a.mileage) / b.volume)
+      end
+    end
+
+    std_dev = values.standard_deviation
+    mean = values.mean
+
+    upper_bound = mean + std_dev
+    lower_bound = mean - std_dev
+    values.reject { |v| v > upper_bound || v < lower_bound }.mean
+  end
+
+  def mpg
+    values = []
+    gas_records.order('mileage ASC').each_cons(2) do |a, b|
+      # puts "#{b.mileage} - #{a.mileage} = #{c = b.mileage - a.mileage}\t#{b.volume}\t#{b.volume ? c / b.volume : nil}"
+      if b.volume
+        values << ((b.mileage - a.mileage) / b.volume)
+      end
+    end
+
+   values.mean
   end
 
   def update_slug
