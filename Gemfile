@@ -22,7 +22,10 @@ group :development, :test do
   gem 'thor'
 end
 
-gem 'rails_12factor', group: :production
+group :production do
+  gem 'mysql2'
+  gem 'rails_12factor'
+end
 
 # App configuration
 gem 'figaro'
