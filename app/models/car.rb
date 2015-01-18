@@ -8,7 +8,7 @@ class Car < ActiveRecord::Base
   has_many :service_records
   belongs_to :user
 
-  after_save :update_slug
+  # after_save :update_slug
 
   def update_mpg
   end
@@ -55,9 +55,9 @@ class Car < ActiveRecord::Base
     "#{self.name}"
   end
 
-  def to_param
-    slug
-  end
+  # def to_param
+  #   slug
+  # end
 
   def to_csv(options = {})
     CSV.generate(options) do |csv|

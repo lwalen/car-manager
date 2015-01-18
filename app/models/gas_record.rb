@@ -3,6 +3,8 @@ class GasRecord < Record
   after_save :update_mpg
   after_destroy :update_mpg
 
+  alias_attribute :distance, :mileage
+
   def update_mpg
     car.update_mpg
   end
@@ -14,5 +16,4 @@ class GasRecord < Record
   def to_s
     "#{date} #{distance} #{volume} #{cost}"
   end
-
 end

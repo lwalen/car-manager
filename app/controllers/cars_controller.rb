@@ -4,7 +4,7 @@ class CarsController < ApplicationController
   end
 
   def show
-    @car = current_user.cars.find_by_slug(params[:id]) || not_found
+    @car = current_user.cars.find(params[:id]) || not_found
 
     respond_to do |format|
       format.html do
@@ -47,7 +47,7 @@ class CarsController < ApplicationController
   end
 
   def edit
-    @car = current_user.cars.find_by_slug(params[:id])
+    @car = current_user.cars.find(params[:id])
     unless current_user.id == @car.user_id
       message 'error', "You do not have permission to view this page."
       redirect_to current_user
@@ -55,7 +55,7 @@ class CarsController < ApplicationController
   end
 
   def update
-    @car = current_user.cars.find_by_slug(params[:id])
+    @car = current_user.cars.find(params[:id])
 
     if @car.update_attributes(car_params)
       message 'success', "Car '#{@car.name}' was successfully updated."
@@ -66,7 +66,7 @@ class CarsController < ApplicationController
   end
 
   def destroy
-    @car = current_user.cars.find_by_slug(params[:id])
+    @car = current_user.cars.find(params[:id])
     
     if current_user.id == @car.user_id
       name = @car.name
@@ -80,11 +80,11 @@ class CarsController < ApplicationController
   end
 
   def import
-    @car = current_user.cars.find_by_slug(params[:id])
+    @car = current_user.cars.find(params[:id])
   end
 
   def upload
-    @car = current_user.cars.find_by_slug(params[:id])
+    @car = current_user.cars.find(params[:id])
 
     require 'csv'
     CSV.foreach(params[:car][:records_csv].path,
@@ -106,7 +106,7 @@ class CarsController < ApplicationController
   end
 
   def more_records
-    @records = Car.find_by_slug(params[:id]).gas_records.order('mileage DESC').all
+    @records = Car.find(params[:id]).gas_records.order('mileage DESC').all
     render @records
   end
 
