@@ -1,8 +1,14 @@
 CarManager::Application.routes.draw do
   
+  get 'users/settings'
+
   devise_for :users
   root to: 'pages#index'
   get 'pages/index'
+
+  controller :users do
+    get 'settings'
+  end
 
   resources :cars do
     member do
