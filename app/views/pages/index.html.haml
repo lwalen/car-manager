@@ -1,7 +1,9 @@
 
 .col-sm-5
-  = render 'sessions/form'
+  %br
+  %br
+  = link_to "Sign in", new_user_session_path, class: 'btn btn-primary btn-lg'
 .col-sm-5.col-sm-offset-2
   %br
   %br
-  = link_to "I don't have an account", register_path, class: 'btn btn-warning btn-lg'
+  = link_to "I don't have an account", new_user_registration_path, class: 'btn btn-warning btn-lg'

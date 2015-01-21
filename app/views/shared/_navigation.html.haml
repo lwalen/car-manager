@@ -22,7 +22,7 @@
         - if current_user
           %li= link_to "Cars", cars_url
           %li= link_to "Settings", settings_url
-          %li= link_to "Sign Out", signout_url
+          %li= link_to "Sign Out", destroy_user_session_url
         - else
-          %li= link_to "Sign In", signin_url
-          %li= link_to "Register", register_url
+          %li= link_to "Sign In", new_user_session_url
+          %li= link_to "Register", new_user_registration_url

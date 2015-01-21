@@ -4,16 +4,6 @@ CarManager::Application.routes.draw do
   root to: 'pages#index'
   get 'pages/index'
 
-  resources :users, only: [:new, :create, :edit, :update, :destroy]
-  get 'register', to: 'users#new', as: :register
-  get 'settings', to: 'users#edit', as: :settings
-
-  controller :sessions, only: [:new, :create, :destroy] do
-    get 'signin', to: :new
-    post 'signin', to: :create
-    get 'signout', to: :destroy
-  end
-
   resources :cars do
     member do
       get 'more_records'
