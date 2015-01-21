@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141015035018) do
+ActiveRecord::Schema.define(version: 20150121053923) do
 
   create_table "cars", force: true do |t|
     t.integer  "user_id"
@@ -51,16 +51,6 @@ ActiveRecord::Schema.define(version: 20141015035018) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "username"
-    t.string   "password_digest"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "auth_token"
-    t.integer  "number_of_gas_records",     default: 5
-    t.string   "distance_unit",             default: "Miles"
-    t.string   "volume_unit",               default: "Gallons"
-    t.integer  "primary_car_id"
-    t.integer  "number_of_service_records", default: 5
   end
 
 end
