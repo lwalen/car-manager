@@ -27,6 +27,9 @@ group :production do
   gem 'rails_12factor'
 end
 
+# User authentication
+gem 'devise'
+
 # App configuration
 gem 'figaro'
 
