@@ -33,8 +33,8 @@ gem 'devise'
 # App configuration
 gem 'figaro'
 
-# Use haml for view templating
-gem "haml-rails"
+# Use slim for view templating
+gem "slim-rails"
 
 # Use bootstrap for responsive layout
 gem 'bootstrap-sass'
