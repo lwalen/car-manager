@@ -1,0 +1,11 @@
+.row
+  .col-sm-8
+    h1 Cars
+    br
+    - if @cars.empty?
+      p You don't have any cars!
+    ul.list-group
+      = render @cars
+
+      li.list-group-item
+        = render 'cars/new'

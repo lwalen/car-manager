@@ -1,4 +1,4 @@
-%h3 Add Gas
+h3 Add Gas
 = form_for [@car, GasRecord.new], html: {class: 'form-horizontal', novalidate: true} do |f|
   = f.hidden_field :car_id, value: @car.id
 
@@ -15,13 +15,13 @@
     .col-xs-9
       .input-group
         = f.number_field :mileage, class: 'form-control', autocomplete: 'off'
-        %span.input-group-addon= current_user.distance_unit.downcase
+        span.input-group-addon= current_user.distance_unit.downcase
 
   .form-group
     = f.label :cost, class: 'control-label col-xs-3'
     .col-xs-9
       .input-group
-        %span.input-group-addon $
+        span.input-group-addon $
         = f.number_field :cost, class: 'form-control', autocomplete: 'off'
 
   .form-group
@@ -29,7 +29,7 @@
     .col-xs-9
       .input-group
         = f.number_field :volume, class: 'form-control', autocomplete: 'off'
-        %span.input-group-addon= current_user.volume_unit.downcase
+        span.input-group-addon= current_user.volume_unit.downcase
 
   .text-right
     = f.submit 'add', class: 'btn btn-primary btn-lg'

@@ -1,0 +1,12 @@
+tr class="#{'no-stat' unless gas_record.stat?}"
+  td.date= gas_record.date.strftime('%b %-d, %Y')
+  td.mileage= number_with_delimiter(gas_record.mileage.round, delimiter: ',')
+  td.volume= number_with_precision(gas_record.volume, precision: 2)
+  td.cost= number_to_currency(gas_record.cost)
+
+  td.hidden-xs.text-right.actions
+    = link_to toggle_stats_car_gas_record_path(gas_record.car, gas_record.id), method: :post, class: "btn btn-xs btn-default" do
+      | stats
+      span.glyphicon class="glyphicon-#{gas_record.stat? ? 'ok' : 'none'}"
+    = link_to 'delete', [gas_record.car, gas_record], method: :delete, class: "btn btn-xs btn-danger", data: { confirm: "Are you sure you want to delete this record?" }
+

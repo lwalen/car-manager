@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require xray
 //= require_tree .
 //= require selectize
 //= require bootstrap

@@ -1,0 +1,11 @@
+
+table.table.records
+  thead
+    tr
+      th Date
+      th Mileage
+      th= current_user.volume_unit
+      th Cost
+      th.hidden-xs
+  tbody.gas-tbody
+    = render records

@@ -1,0 +1,25 @@
+doctype 5
+html
+  head
+    title Car Manager
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+
+    meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1')/
+
+    = render 'shared/favicons'
+  body
+    = render 'shared/navigation'
+
+    .container
+      - if flash[:notice]
+        .alert.center-block class="alert-#{flash[:notice_type]}" = notice
+      = yield
+
+    /! hacky, but does what I want
+    - if %w(/ /register).include?(request.env['PATH_INFO'])
+      .footer
+        p.text-muted
+          | Made by #{link_to 'Lars', 'http://walen.me'}.
+          | Source available on #{link_to 'GitHub', 'https://github.com/lwalen/car-manager'}.
