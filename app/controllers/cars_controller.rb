@@ -1,4 +1,7 @@
 class CarsController < ApplicationController
+
+  before_action :authenticate_user!
+
   def index
     @cars = current_user.cars.order(:created_at)
   end
