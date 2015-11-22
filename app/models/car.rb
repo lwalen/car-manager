@@ -1,8 +1,8 @@
 class Car < ActiveRecord::Base
 
   validates :name,
-    presence: true, 
-    uniqueness: { scope: :user_id } 
+    presence: true,
+    uniqueness: { scope: :user_id }
 
   has_many :gas_records
   has_many :service_records
@@ -59,11 +59,20 @@ class Car < ActiveRecord::Base
   #   slug
   # end
 
-  def to_csv(options = {})
-    CSV.generate(options) do |csv|
-      csv << ['Date', 'Distance', 'Volume', 'Cost']
-      gas_records.order(:mileage).each do |r|
-        csv << [r.date, r.mileage, r.volume, r.cost]
+  def to_csv(type = :gas, options = {})
+    if type == :gas
+      CSV.generate(options) do |csv|
+        csv << ['Date', 'Distance', 'Volume', 'Cost']
+        gas_records.order(:mileage).each do |r|
+          csv << [r.date, r.mileage, r.volume, r.cost]
+        end
+      end
+    elsif type == :service
+      CSV.generate(options) do |csv|
+        csv << ['Date', 'Distance', 'Cost', 'Type', 'Notes']
+        service_records.order(:mileage).each do |r|
+          csv << [r.date, r.mileage, r.cost, r.service_types_list, r.notes]
+        end
       end
     end
   end

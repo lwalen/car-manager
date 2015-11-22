@@ -1,5 +1,16 @@
 class GasRecordsController < ApplicationController
 
+  def index
+    @car = current_user.cars.find(params[:car_id]) || not_found
+
+    respond_to do |format|
+      format.csv do
+        filename = "#{@car.name.tr(' ', '_')}_#{Date.today.strftime("%Y%m%d")}_gas.csv"
+        send_data @car.to_csv(:gas), filename: filename
+      end
+    end
+  end
+
   def new
   end
 

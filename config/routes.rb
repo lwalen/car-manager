@@ -17,12 +17,12 @@ CarManager::Application.routes.draw do
       patch 'upload'
     end
 
-    resources :gas_records, only: [:new, :create, :destroy] do
+    resources :gas_records, only: [:index, :new, :create, :destroy] do
       member do
         post 'toggle_stats'
       end
     end
 
-    resources :service_records, only: [:new, :create, :destroy]
+    resources :service_records, only: [:index, :new, :create, :destroy]
   end
 end

@@ -18,4 +18,12 @@ class User < ActiveRecord::Base
 	def to_s
 		"#{self.username}"
 	end
+
+  def distance_unit
+    read_attribute(:distance_unit) || 'Miles'
+  end
+
+  def volume_unit
+    read_attribute(:volume_unit) || 'Gallons'
+  end
 end
